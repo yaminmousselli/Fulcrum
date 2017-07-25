@@ -30,17 +30,21 @@ public class MainActivity extends AppCompatActivity {
 
         if (AC.checkComplete()) {
             mComplete.setVisibility(View.VISIBLE);
+            mAssessment.setText("Complete!");
         } else {
             mComplete.setVisibility(View.INVISIBLE);
+            mAssessment.setText("Daily Assessment");
         }
 
         mAssessment.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(),daily_assessment.class);
-                intent.putExtra("AC", AC);
-                intent.putExtra("questionNum", mQuestionNum);
-                startActivity(intent);
+                if (!AC.checkComplete()) {
+                    Intent intent = new Intent(getApplicationContext(), daily_assessment.class);
+                    intent.putExtra("AC", AC);
+                    intent.putExtra("questionNum", mQuestionNum);
+                    startActivity(intent);
+                }
             }
         });
     }
