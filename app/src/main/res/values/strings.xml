@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">Fulcrum</string>
+    <string name="title_activity_assessment1">Assessment1</string>
+    <string name="save_exit"><![CDATA[Save & Exit]]></string>
+</resources>
