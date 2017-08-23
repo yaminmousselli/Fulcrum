@@ -1,12 +1,4 @@
-# built application files
-*.apk
-*.ap_
 
-# files for the dex VM
-*.dex
-
-# Java class files
-*.class
 
 # built native files (uncomment if you build your own)
 # *.o
@@ -40,3 +32,8 @@ Thumbs.db
 .idea/tasks.xml
 .idea/datasources.xml
 .idea/dataSources.ids
+.idea/libraries/
+Fulcrum.iml
+app/app.iml
+app/libs/
+app/src/main/res/drawable/
