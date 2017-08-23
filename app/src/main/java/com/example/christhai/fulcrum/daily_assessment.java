@@ -50,7 +50,7 @@ public class daily_assessment extends AppCompatActivity {
         mChoice5 = (RadioButton) findViewById(R.id.answer5);
 
         mNext = (Button) findViewById(R.id.next);
-        Button mPrev = (Button) findViewById(R.id.prev);
+        final Button mPrev = (Button) findViewById(R.id.prev);
         Button mSave = (Button) findViewById(R.id.save);
 
         getParcel();
@@ -64,8 +64,8 @@ public class daily_assessment extends AppCompatActivity {
                     mAnswers.clearCheck();
                     checkScores();
                 } else if (mQuestionNum == 9) {
+                    updateScores();
                     if (AC.checkComplete()) {
-                        updateScores();
                         Bundle b = new Bundle();
                         Intent intent = new Intent();
                         b.putParcelable("AC", AC);
@@ -82,6 +82,9 @@ public class daily_assessment extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 if (mQuestionNum > 0) {
+                    if (mQuestionNum == 9) {
+                        mNext.setText("Next");
+                    }
                     updateScores();
                     mQuestionNum--;
                     updateText();
