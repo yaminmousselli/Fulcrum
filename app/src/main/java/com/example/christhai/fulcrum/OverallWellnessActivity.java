@@ -11,3 +11,4 @@ public class OverallWellnessActivity extends AppCompatActivity {
         setContentView(R.layout.activity_overall_wellness);
     }
 }
+
