@@ -4,13 +4,13 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.christhai.fulcrum.SocialTrendsActivity">
+    tools:context="com.example.christhai.fulcrum.PhysicalTrendsActivity">
 
     <TextView
-        android:id="@+id/textView19"
+        android:id="@+id/textView18"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Social Trends"
+        android:text="Physical Trends"
         android:textSize="36sp"
         tools:layout_constraintTop_creator="1"
         tools:layout_constraintRight_creator="1"
