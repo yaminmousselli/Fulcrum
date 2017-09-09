@@ -2,6 +2,12 @@
     <string name="app_name">Fulcrum</string>
     <string name="title_activity_assessment1">Assessment1</string>
     <string name="save_exit"><![CDATA[Save & Exit]]></string>
+  
+    <string name="title_activity_hamburger_menu">HamburgerMenuActivity</string>
+
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="action_settings">Settings</string>
     <string name="title_activity_login">Sign in</string>
 
     <!-- Strings related to login -->
