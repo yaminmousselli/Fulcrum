@@ -11,6 +11,10 @@ import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
 
+/** Represents the account activity page for security questions.
+ * @author Team Atlas
+ * @version 1.0
+*/
 public class RegisterActivity extends AppCompatActivity {
 
     @Override

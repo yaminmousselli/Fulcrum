@@ -7,6 +7,10 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
+/** Represents the account settings page and stores account information.
+ * @author Team Atlas
+ * @version 1.0
+*/
 public class AccountActivity extends AppCompatActivity {
 
     @Override

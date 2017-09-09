@@ -10,6 +10,10 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+/** Represents the home page.
+ * @author Team Atlas
+ * @version 1.0
+*/
 public class MainActivity extends AppCompatActivity {
 
 
