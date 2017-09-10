@@ -10,6 +10,10 @@ import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
 
+/** Represents the daily assessment page.
+ * @author Team Atlas
+ * @version 1.0
+*/
 public class daily_assessment extends AppCompatActivity {
 
     private AssessmentController AC = new AssessmentController();
