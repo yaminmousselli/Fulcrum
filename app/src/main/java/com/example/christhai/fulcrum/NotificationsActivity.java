@@ -6,8 +6,6 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
-
-
 /** Represents the notification settings page.
  * @author Team Atlas
  * @version 1.0

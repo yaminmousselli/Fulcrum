@@ -7,6 +7,7 @@ import android.os.Bundle;
  * @author Team Atlas
  * @version 1.0
 */
+
 public class OverallWellnessActivity extends AppCompatActivity {
 
     @Override

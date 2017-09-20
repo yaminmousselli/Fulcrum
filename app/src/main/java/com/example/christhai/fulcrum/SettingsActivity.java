@@ -14,6 +14,7 @@ import android.widget.TextView;
  * @author Team Atlas
  * @version 1.0
 */
+
 public class SettingsActivity extends AppCompatActivity {
 
     @Override
