@@ -1,8 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+<<<<<<< HEAD
     <color name="colorPrimary">#80E1FF</color>
     <color name="colorPrimaryDark">#2fcaf9</color>
     <color name="colorAccent">#ff4081</color>
+=======
+    <color name="colorPrimary">#87cefa</color>
+    <color name="colorPrimaryDark">#87ceeb</color>
+    <color name="colorAccent">#FF4081</color>
+>>>>>>> 50f4e1e5636897d8be518278c8a984f32717265f
     <color name="yellow">#fff200</color>
     <color name="green">#73ff00</color>
 </resources>

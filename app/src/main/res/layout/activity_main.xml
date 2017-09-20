@@ -152,6 +152,52 @@
         tools:layout_constraintBottom_creator="1"
         tools:layout_constraintRight_creator="1"
         tools:layout_constraintTop_creator="1" />
+    <TextView
+        android:id="@+id/academic_trend"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="9dp"
+        android:text="Academic"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toBottomOf="@+id/academic_bar"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toLeftOf="@+id/academic_bar"
+        tools:layout_constraintBottom_creator="1" />
+
+    <TextView
+        android:id="@+id/emotional_trend"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Emotional"
+        android:textSize="18sp"
+        app:layout_constraintRight_toLeftOf="@+id/emotional_bar"
+        app:layout_constraintLeft_toLeftOf="parent"
+        tools:layout_constraintBottom_creator="1"
+        app:layout_constraintBottom_toBottomOf="@+id/emotional_bar"
+        android:layout_marginBottom="11dp" />
+
+    <TextView
+        android:id="@+id/physical_trend"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Physical"
+        android:textSize="18sp"
+        app:layout_constraintRight_toLeftOf="@+id/physical_bar"
+        app:layout_constraintLeft_toLeftOf="parent"
+        tools:layout_constraintBottom_creator="1"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginBottom="68dp" />
+
+    <TextView
+        android:id="@+id/social_trend"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Social"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toLeftOf="@+id/social_bar"
+        app:layout_constraintTop_toBottomOf="@+id/physical_trend" />
 
     <TextView
         android:id="@+id/textView20"

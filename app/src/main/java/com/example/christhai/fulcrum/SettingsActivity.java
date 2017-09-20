@@ -10,6 +10,11 @@ import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
 
+/** Represents the settings page.
+ * @author Team Atlas
+ * @version 1.0
+*/
+
 public class SettingsActivity extends AppCompatActivity {
 
     @Override

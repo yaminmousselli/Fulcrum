@@ -7,6 +7,10 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
+/** Represents the login page.
+ * @author Team Atlas
+ * @version 1.0
+*/
 public class LoginActivity extends AppCompatActivity {
 
     @Override
