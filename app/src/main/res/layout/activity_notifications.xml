@@ -84,13 +84,8 @@
 
     <Button
         android:id="@+id/save_notifications"
-<<<<<<< HEAD
-        android:layout_width="159dp"
-        android:layout_height="60dp"
-=======
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
->>>>>>> 50f4e1e5636897d8be518278c8a984f32717265f
         android:text="Save"
         android:textSize="18sp"
         tools:layout_constraintRight_creator="1"
@@ -98,13 +93,6 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         tools:layout_constraintLeft_creator="1"
-<<<<<<< HEAD
-        android:layout_marginBottom="40dp"
-        app:layout_constraintLeft_toLeftOf="parent"
-        tools:layout_editor_absoluteY="411dp"
-        app:layout_constraintHorizontal_bias="0.501" />
-=======
         android:layout_marginBottom="80dp"
         app:layout_constraintLeft_toLeftOf="parent" />
->>>>>>> 50f4e1e5636897d8be518278c8a984f32717265f
 </android.support.constraint.ConstraintLayout>
