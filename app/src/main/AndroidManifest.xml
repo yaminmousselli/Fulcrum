@@ -31,7 +31,8 @@
         <activity android:name=".AcademicTrendsActivity" />
         <activity android:name=".EmotionalTrendsActivity" />
         <activity android:name=".PhysicalTrendsActivity" />
-        <activity android:name=".SocialTrendsActivity"></activity>
+        <activity android:name=".SocialTrendsActivity" />
+        <activity android:name=".TermsAndConditionsActivity"></activity>
     </application>
 
 </manifest>

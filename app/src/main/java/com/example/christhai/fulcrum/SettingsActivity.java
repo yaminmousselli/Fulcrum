@@ -43,15 +43,13 @@ public class SettingsActivity extends AppCompatActivity {
             }
         });
 
-        /*  //I am inserting this for when we get terms and conditions
         termsAndConditions.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+                Intent intent = new Intent(getApplicationContext(), TermsAndConditionsActivity.class);
                 startActivity(intent);
             }
         });
-        */
     }
 }
 
