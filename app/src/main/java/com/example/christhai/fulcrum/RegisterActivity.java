@@ -7,14 +7,11 @@ import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.CheckBox;
+import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
 
-/** Represents the account activity page for security questions.
- * @author Team Atlas
- * @version 1.0
-*/
 public class RegisterActivity extends AppCompatActivity {
 
     @Override
@@ -35,17 +32,35 @@ public class RegisterActivity extends AppCompatActivity {
         EditText password = (EditText) findViewById(R.id.password_registration);
         EditText confirmPassword = (EditText) findViewById(R.id.confirm_pw_registration);
 
+        DatePicker birthday = (DatePicker) findViewById(R.id.birthday);
+        Spinner sexList = (Spinner) findViewById(R.id.sex);
+        EditText height = (EditText) findViewById(R.id.height);
+        EditText weight = (EditText) findViewById(R.id.weight);
+
         Spinner securityQuestionList = (Spinner) findViewById(R.id.security_question);
         EditText securityQuestionAnswer = (EditText) findViewById(R.id.security_question_answer);
 
         final CheckBox acceptTermsAndConditions = (CheckBox) findViewById(R.id.accept_terms_and_conditions);
+        TextView terms_and_conditions = (TextView) findViewById(R.id.Terms_and_Conditions_Link_Registration);
 
         Button submit = (Button) findViewById(R.id.submit_registration);
 
+        String[] sexes = new String[]{"Male", "Female"};  //This holds the different sexes
+        ArrayAdapter<String> sexAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_dropdown_item, sexes);
+        sexList.setAdapter(sexAdapter);
+
         //TODO change this when we have the security questions
-        String[] items = new String[]{"Question 1...", "Question 2...", "Question 3..."};  //This holds the different security questions
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_dropdown_item, items);
-        securityQuestionList.setAdapter(adapter);
+        String[] questions = new String[]{"Question 1...", "Question 2...", "Question 3..."};  //This holds the different security questions
+        ArrayAdapter<String> secQuestionAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_dropdown_item, questions);
+        securityQuestionList.setAdapter(secQuestionAdapter);
+
+        /*terms_and_conditions.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(), TermsAndConditionsActivity.class);
+                startActivity(intent);
+            }
+        });*/
 
         submit.setOnClickListener(new View.OnClickListener() {
             @Override
