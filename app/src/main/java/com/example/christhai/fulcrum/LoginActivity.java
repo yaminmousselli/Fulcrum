@@ -6,17 +6,36 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+import com.google.firebase.auth.FirebaseUser;
+
+import com.google.firebase.auth.FirebaseAuth;
 
 /** Represents the login page.
  * @author Team Atlas
  * @version 1.0
 */
 public class LoginActivity extends AppCompatActivity {
+    private FirebaseAuth mAuth;
+    private FirebaseAuth.AuthStateListener mAuthListener;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+    }
+
+    @Override
+    public void onStart() {
+        super.onStart();
+        mAuth.addAuthStateListener(mAuthListener);
+    }
+
+    @Override
+    public void onStop() {
+        super.onStop();
+        if (mAuthListener != null) {
+            mAuth.removeAuthStateListener(mAuthListener);
+        }
     }
 
     @Override
@@ -59,4 +78,8 @@ public class LoginActivity extends AppCompatActivity {
             }
         });
     }
+
+
+
+
 }
