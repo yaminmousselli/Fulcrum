@@ -22,7 +22,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".daily_assessment" />
-        <activity android:name=".LoadingActivity"></activity>
+        <activity android:name=".LoadingActivity" />
         <activity android:name=".MainActivity" />
         <activity android:name=".RegisterActivity" />
         <activity android:name=".SettingsActivity" />
@@ -32,7 +32,8 @@
         <activity android:name=".AcademicTrendsActivity" />
         <activity android:name=".EmotionalTrendsActivity" />
         <activity android:name=".PhysicalTrendsActivity" />
-        <activity android:name=".SocialTrendsActivity"></activity>
+        <activity android:name=".SocialTrendsActivity" />
+        <activity android:name=".TermsAndConditionsActivity"></activity>
     </application>
 
 </manifest>

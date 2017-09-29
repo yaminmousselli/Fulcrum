@@ -11,10 +11,6 @@ import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
 
-/** Represents the account activity page for security questions.
- * @author Team Atlas
- * @version 1.0
-*/
 public class RegisterActivity extends AppCompatActivity {
 
     @Override
@@ -39,6 +35,7 @@ public class RegisterActivity extends AppCompatActivity {
         EditText securityQuestionAnswer = (EditText) findViewById(R.id.security_question_answer);
 
         final CheckBox acceptTermsAndConditions = (CheckBox) findViewById(R.id.accept_terms_and_conditions);
+        TextView terms_and_conditions = (TextView) findViewById(R.id.Terms_and_Conditions_Link_Registration);
 
         Button submit = (Button) findViewById(R.id.submit_registration);
 
@@ -46,6 +43,14 @@ public class RegisterActivity extends AppCompatActivity {
         String[] items = new String[]{"Question 1...", "Question 2...", "Question 3..."};  //This holds the different security questions
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_dropdown_item, items);
         securityQuestionList.setAdapter(adapter);
+
+        terms_and_conditions.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(), TermsAndConditionsActivity.class);
+                startActivity(intent);
+            }
+        });
 
         submit.setOnClickListener(new View.OnClickListener() {
             @Override

@@ -10,11 +10,6 @@ import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
 
-/** Represents the settings page.
- * @author Team Atlas
- * @version 1.0
-*/
-
 public class SettingsActivity extends AppCompatActivity {
 
     @Override
@@ -48,15 +43,13 @@ public class SettingsActivity extends AppCompatActivity {
             }
         });
 
-        /*  //I am inserting this for when we get terms and conditions
         termsAndConditions.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+                Intent intent = new Intent(getApplicationContext(), TermsAndConditionsActivity.class);
                 startActivity(intent);
             }
         });
-        */
     }
 }
 
