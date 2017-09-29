@@ -25,8 +25,9 @@
         <activity android:name=".LoadingActivity" />
         <activity android:name=".MainActivity" />
         <activity android:name=".RegisterActivity" />
-        <activity android:name=".SettingsActivity"
-            android:theme="@style/AppTheme.NoActionBar"/>
+        <activity
+            android:name=".SettingsActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".AccountActivity" />
         <activity android:name=".NotificationsActivity" />
         <activity android:name=".OverallWellnessActivity" />
@@ -37,7 +38,8 @@
         <activity
             android:name=".nav_bar"
             android:label="@string/title_activity_nav_bar"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name=".HelpFeedbackActivity"></activity>
     </application>
 
 </manifest>

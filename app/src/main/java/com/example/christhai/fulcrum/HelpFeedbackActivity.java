@@ -2,9 +2,7 @@ package com.example.christhai.fulcrum;
 
 import android.content.Intent;
 import android.support.annotation.NonNull;
-import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.NavigationView;
-import android.support.design.widget.Snackbar;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
@@ -13,73 +11,31 @@ import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
-import android.widget.Button;
-import android.widget.CheckBox;
-import android.widget.EditText;
-import android.widget.Spinner;
-import android.widget.TextView;
 
-/** Represents the settings page.
- * @author Team Atlas
- * @version 1.0
-*/
+public class HelpFeedbackActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
-public class SettingsActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
-
-    private NavigationView navigationView;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_settings);
+        setContentView(R.layout.activity_help_feedback);
     }
 
     @Override
     protected void onResume() {
         super.onResume();
-        setContentView(R.layout.activity_settings);
+        setContentView(R.layout.activity_help_feedback);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        toolbar.setTitle("Settings");
+        toolbar.setTitle("Help & Feedback");
 
-        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.settings_drawer);
+        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.help_drawer);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
                 this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
         drawer.setDrawerListener(toggle);
         toggle.syncState();
 
-        navigationView = (NavigationView) findViewById(R.id.nav_view);
+        NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
-
-        TextView account = (TextView) findViewById(R.id.account_settings);
-        TextView notifications = (TextView) findViewById(R.id.notifications);
-        TextView termsAndConditions = (TextView) findViewById(R.id.terms_and_conditions);
-
-        account.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(), AccountActivity.class);
-                startActivity(intent);
-            }
-        });
-
-        notifications.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(), NotificationsActivity.class);
-                startActivity(intent);
-            }
-        });
-
-        /*  //I am inserting this for when we get terms and conditions
-        termsAndConditions.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(), MainActivity.class);
-                startActivity(intent);
-            }
-        });
-        */
     }
 
     //Below are methods for the Toolbar.
@@ -92,6 +48,8 @@ public class SettingsActivity extends AppCompatActivity implements NavigationVie
             super.onBackPressed();
         }
     }
+
+
 
 
     @Override
@@ -133,4 +91,3 @@ public class SettingsActivity extends AppCompatActivity implements NavigationVie
         }
     }
 }
-
