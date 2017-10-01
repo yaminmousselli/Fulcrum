@@ -2,7 +2,7 @@
     <string name="app_name">Fulcrum</string>
     <string name="title_activity_assessment1">Assessment1</string>
     <string name="save_exit"><![CDATA[Save & Exit]]></string>
-  
+
     <string name="title_activity_hamburger_menu">HamburgerMenuActivity</string>
 
     <string name="navigation_drawer_open">Open navigation drawer</string>
@@ -22,4 +22,5 @@
     <string name="permission_rationale">"Contacts permissions are needed for providing email
         completions."
     </string>
+    <string name="title_activity_nav_bar">nav_bar</string>
 </resources>

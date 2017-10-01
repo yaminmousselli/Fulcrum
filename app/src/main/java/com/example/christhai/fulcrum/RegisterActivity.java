@@ -11,8 +11,12 @@ import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.DatabaseReference;
 
 public class RegisterActivity extends AppCompatActivity {
+    FirebaseDatabase database = FirebaseDatabase.getInstance();
+    DatabaseReference myRef = database.getReference("message");
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,11 +30,11 @@ public class RegisterActivity extends AppCompatActivity {
         setContentView(R.layout.activity_register);
 
         //There is no logic to check anything yet, since we will handle this when we set up the database
-        EditText firstName = (EditText) findViewById(R.id.first_name_registration);
-        EditText lastName = (EditText) findViewById(R.id.last_name_registration);
-        EditText email = (EditText) findViewById(R.id.email_registration);
-        EditText password = (EditText) findViewById(R.id.password_registration);
-        EditText confirmPassword = (EditText) findViewById(R.id.confirm_pw_registration);
+        final EditText firstName = (EditText) findViewById(R.id.first_name_registration);
+        final EditText lastName = (EditText) findViewById(R.id.last_name_registration);
+        final EditText email = (EditText) findViewById(R.id.email_registration);
+        final EditText password = (EditText) findViewById(R.id.password_registration);
+        final EditText confirmPassword = (EditText) findViewById(R.id.confirm_pw_registration);
 
         DatePicker birthday = (DatePicker) findViewById(R.id.birthday);
         Spinner sexList = (Spinner) findViewById(R.id.sex);
@@ -38,7 +42,7 @@ public class RegisterActivity extends AppCompatActivity {
         EditText weight = (EditText) findViewById(R.id.weight);
 
         Spinner securityQuestionList = (Spinner) findViewById(R.id.security_question);
-        EditText securityQuestionAnswer = (EditText) findViewById(R.id.security_question_answer);
+        final EditText securityQuestionAnswer = (EditText) findViewById(R.id.security_question_answer);
 
         final CheckBox acceptTermsAndConditions = (CheckBox) findViewById(R.id.accept_terms_and_conditions);
         TextView terms_and_conditions = (TextView) findViewById(R.id.Terms_and_Conditions_Link_Registration);
@@ -50,9 +54,6 @@ public class RegisterActivity extends AppCompatActivity {
         sexList.setAdapter(sexAdapter);
 
         //TODO change this when we have the security questions
-        String[] questions = new String[]{"Question 1...", "Question 2...", "Question 3..."};  //This holds the different security questions
-        ArrayAdapter<String> secQuestionAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_dropdown_item, questions);
-        securityQuestionList.setAdapter(secQuestionAdapter);
 
         /*terms_and_conditions.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -61,13 +62,32 @@ public class RegisterActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });*/
+        String[] items = new String[]{"Where were you born?", "What is your favorite pizza topping?", "What is your best friend's name?"};  //This holds the different security questions
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_dropdown_item, items);
+        securityQuestionList.setAdapter(adapter);
+
+        terms_and_conditions.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(), TermsAndConditionsActivity.class);
+                startActivity(intent);
+            }
+        });
 
         submit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if (acceptTermsAndConditions.isChecked()){
-                    Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+                    Intent intent = new Intent(getApplicationContext(), LoginActivity.class);
                     startActivity(intent);
+                    User newUser = new User(firstName.getText().toString(),
+                            lastName.getText().toString(),
+                            email.getText().toString(),
+                            password.getText().toString(),
+                            0, // Will change later
+                            securityQuestionAnswer.getText().toString());
+                    myRef.push();
+
                 }
             }
         });
