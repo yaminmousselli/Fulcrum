@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_home"
+            android:title="Home"
+            android:icon="@drawable/heart_icon"/>
+        <item
+            android:id="@+id/nav_daily_assessment"
+            android:title="Daily Assessment" />
+        <item
+            android:id="@+id/nav_overall_wellness"
+            android:title="Overall Wellness" />
+        <item
+            android:id="@+id/nav_current_trends"
+            android:title="Current Trends">
+            <menu
+                android:id="@+id/nav_trends_menu">
+                <item
+                    android:id="@+id/nav_emotional"
+                    android:title="Emotional Trends"
+                    android:visible="false"/>
+                <item
+                    android:id="@+id/nav_social"
+                    android:title="Social Trends"
+                    android:visible="false"/>
+                <item
+                    android:id="@+id/nav_physical"
+                    android:title="Physical Trends"
+                    android:visible="false"/>
+                <item
+                    android:id="@+id/nav_academic"
+                    android:title="Academic Trends"
+                    android:visible="false"/>
+            </menu>
+        </item>
+
+        <item
+            android:id="@+id/nav_settings"
+            android:title="Settings" />
+        <item
+            android:id="@+id/nav_help_feedback"
+            android:title="Help &amp; Feedback" />
+        <item
+            android:id="@+id/nav_sign_out"
+            android:title="Sign Out" />
+    </group>
+
+
+</menu>
