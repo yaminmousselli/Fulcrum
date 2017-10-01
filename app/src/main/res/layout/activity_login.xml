@@ -107,8 +107,6 @@
         android:layout_width="0dp"
         android:layout_height="287dp"
         app:srcCompat="@drawable/blueicon"
-        tools:layout_editor_absoluteX="31dp"
-        tools:layout_editor_absoluteY="-50dp"
         tools:layout_constraintRight_creator="1"
         tools:layout_constraintBottom_creator="1"
         app:layout_constraintBottom_toTopOf="@+id/password"
@@ -116,8 +114,9 @@
         android:layout_marginEnd="30dp"
         app:layout_constraintRight_toRightOf="parent"
         tools:layout_constraintLeft_creator="1"
-        android:layout_marginBottom="22dp"
+        android:layout_marginBottom="308dp"
         app:layout_constraintLeft_toLeftOf="parent"
         android:layout_marginLeft="30dp"
-        android:layout_marginRight="30dp" />
+        android:layout_marginRight="30dp"
+        app:layout_constraintHorizontal_bias="0.0" />
 </android.support.constraint.ConstraintLayout>
