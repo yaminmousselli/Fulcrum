@@ -17,10 +17,10 @@ import com.google.firebase.auth.FirebaseAuth;
  * @version 1.0
 */
 public class LoginActivity extends AppCompatActivity {
-    private FirebaseAuth mAuth;
-    private FirebaseAuth.AuthStateListener mAuthListener;
-    FirebaseDatabase database = FirebaseDatabase.getInstance();
-    DatabaseReference myRef = database.getReference("message");
+//    private FirebaseAuth mAuth;
+//    private FirebaseAuth.AuthStateListener mAuthListener;
+//    FirebaseDatabase database = FirebaseDatabase.getInstance();
+//    DatabaseReference myRef = database.getReference("message");
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,15 +31,15 @@ public class LoginActivity extends AppCompatActivity {
     @Override
     public void onStart() {
         super.onStart();
-        mAuth.addAuthStateListener(mAuthListener);
+//        mAuth.addAuthStateListener(mAuthListener);
     }
 
     @Override
     public void onStop() {
         super.onStop();
-        if (mAuthListener != null) {
-            mAuth.removeAuthStateListener(mAuthListener);
-        }
+//        if (mAuthListener != null) {
+//            mAuth.removeAuthStateListener(mAuthListener);
+//        }
     }
 
     @Override
@@ -68,10 +68,10 @@ public class LoginActivity extends AppCompatActivity {
         login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (password.getText().toString().equals(myRef.getDatabase().getReference())) {
+//                if (password.getText().toString().equals(myRef.getDatabase().getReference())) {
                     Intent intent = new Intent(getApplicationContext(), MainActivity.class);
                     startActivity(intent);
-                }
+//                }
             }
         });
 

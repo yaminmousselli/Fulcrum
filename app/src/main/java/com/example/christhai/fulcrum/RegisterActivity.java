@@ -41,11 +41,6 @@ public class RegisterActivity extends AppCompatActivity {
         EditText height = (EditText) findViewById(R.id.height);
         EditText weight = (EditText) findViewById(R.id.weight);
 
-        DatePicker birthday = (DatePicker) findViewById(R.id.birthday);
-        Spinner sexList = (Spinner) findViewById(R.id.sex);
-        EditText height = (EditText) findViewById(R.id.height);
-        EditText weight = (EditText) findViewById(R.id.weight);
-
         Spinner securityQuestionList = (Spinner) findViewById(R.id.security_question);
         final EditText securityQuestionAnswer = (EditText) findViewById(R.id.security_question_answer);
 
