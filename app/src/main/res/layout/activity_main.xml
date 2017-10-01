@@ -1,11 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.v4.widget.DrawerLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:id="@+id/main_drawer"
     tools:context="com.example.christhai.fulcrum.MainActivity">
 
+    <android.support.constraint.ConstraintLayout
+        android:layout_height="match_parent"
+        android:layout_width="match_parent">
     <Button
         android:id="@+id/assessment"
         android:layout_width="wrap_content"
@@ -14,10 +18,11 @@
         tools:layout_constraintTop_creator="1"
         tools:layout_constraintRight_creator="1"
         app:layout_constraintRight_toRightOf="parent"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="61dp"
         tools:layout_constraintLeft_creator="1"
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintHorizontal_bias="0.502" />
 
     <ImageView
         android:id="@+id/complete"
@@ -107,7 +112,9 @@
         app:layout_constraintBottom_toTopOf="@+id/emotional_bar"
         app:layout_constraintRight_toRightOf="@+id/emotional_bar"
         tools:layout_constraintLeft_creator="1"
-        app:layout_constraintLeft_toLeftOf="@+id/emotional_bar" />
+        app:layout_constraintLeft_toLeftOf="@+id/emotional_bar"
+        app:layout_constraintHorizontal_bias="0.0"
+        android:layout_marginBottom="-31dp" />
 
     <ImageButton
         android:id="@+id/emotional_bar"
@@ -119,7 +126,9 @@
         app:layout_constraintBottom_toTopOf="@+id/physical_bar"
         app:layout_constraintRight_toRightOf="@+id/physical_bar"
         tools:layout_constraintLeft_creator="1"
-        app:layout_constraintLeft_toLeftOf="@+id/physical_bar" />
+        app:layout_constraintLeft_toLeftOf="@+id/physical_bar"
+        app:layout_constraintHorizontal_bias="0.0"
+        android:layout_marginBottom="0dp" />
 
     <ImageButton
         android:id="@+id/physical_bar"
@@ -131,24 +140,23 @@
         app:layout_constraintBottom_toTopOf="@+id/social_bar"
         app:layout_constraintRight_toRightOf="@+id/social_bar"
         tools:layout_constraintLeft_creator="1"
-        app:layout_constraintLeft_toLeftOf="@+id/social_bar" />
+        app:layout_constraintLeft_toLeftOf="@+id/social_bar"
+        app:layout_constraintHorizontal_bias="0.0"
+        android:layout_marginBottom="0dp" />
 
     <ImageButton
         android:id="@+id/social_bar"
         android:layout_width="254dp"
-        android:layout_height="0dp"
-        app:srcCompat="@color/colorPrimaryDark"
-        tools:layout_constraintTop_creator="1"
-        tools:layout_constraintRight_creator="1"
-        tools:layout_constraintBottom_creator="1"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_height="48dp"
+        android:layout_marginBottom="7dp"
         android:layout_marginEnd="34dp"
+        android:layout_marginRight="34dp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        android:layout_marginTop="11dp"
-        app:layout_constraintTop_toBottomOf="@+id/physical_trend"
-        android:layout_marginBottom="8dp"
-        android:layout_marginRight="34dp" />
-
+        app:srcCompat="@color/colorPrimaryDark"
+        tools:layout_constraintBottom_creator="1"
+        tools:layout_constraintRight_creator="1"
+        tools:layout_constraintTop_creator="1" />
     <TextView
         android:id="@+id/academic_trend"
         android:layout_width="wrap_content"
@@ -223,4 +231,51 @@
         android:layout_marginBottom="9dp"
         android:layout_marginRight="21dp" />
 
-</android.support.constraint.ConstraintLayout>
+    <ImageView
+        android:id="@+id/imageView3"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        app:srcCompat="@drawable/academic_icon"
+        tools:layout_editor_absoluteX="24dp"
+        tools:layout_editor_absoluteY="308dp" />
+
+    <ImageView
+        android:id="@+id/imageView4"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        app:srcCompat="@drawable/heart_icon"
+        tools:layout_editor_absoluteX="24dp"
+        tools:layout_editor_absoluteY="358dp" />
+
+    <ImageView
+        android:id="@+id/imageView5"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        app:srcCompat="@drawable/social_icon"
+        tools:layout_editor_absoluteX="27dp"
+        tools:layout_editor_absoluteY="454dp" />
+
+    <ImageView
+        android:id="@+id/imageView6"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        app:srcCompat="@drawable/physical_icon"
+        tools:layout_editor_absoluteX="27dp"
+        tools:layout_editor_absoluteY="408dp" />
+    </android.support.constraint.ConstraintLayout>
+
+    <include
+        layout="@layout/app_bar_nav_bar"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+    <android.support.design.widget.NavigationView
+        android:id="@+id/nav_view"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_gravity="start"
+        android:fitsSystemWindows="true"
+        app:headerLayout="@layout/nav_header_nav_bar"
+        app:menu="@menu/activity_nav_bar_drawer" />
+
+</android.support.v4.widget.DrawerLayout>

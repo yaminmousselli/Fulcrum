@@ -3,9 +3,10 @@ package com.example.christhai.fulcrum;
 import android.os.Parcel;
 import android.os.Parcelable;
 
-/**
- * Created by ChrisThai on 7/24/2017.
- */
+/** Represents the back end for the daily assessment page.
+ * @author Team Atlas
+ * @version 1.0
+*/
 
 public class AssessmentController implements Parcelable {
     private String questions [] = {"How well did you cope today?",

@@ -13,7 +13,6 @@ public class TermsAndConditionsActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_terms_and_conditions);
     }
-
     @Override
     protected void onResume() {
         super.onResume();
