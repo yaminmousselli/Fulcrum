@@ -56,17 +56,16 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         navigationView.setNavigationItemSelectedListener(this);
 
         Button overallWellness = (Button) findViewById(R.id.overall_trends);
-        Button settings = (Button) findViewById(R.id.settings_temp);
 
         ImageButton academicBar = (ImageButton) findViewById(R.id.academic_bar);
         ImageButton emotionalBar = (ImageButton) findViewById(R.id.emotional_bar);
         ImageButton physicalBar = (ImageButton) findViewById(R.id.physical_bar);
         ImageButton socialBar = (ImageButton) findViewById(R.id.social_bar);
 
-        TextView academicText = (TextView) findViewById(R.id.academic_trend);
-        TextView emotionalText = (TextView) findViewById(R.id.emotional_trend);
-        TextView physicalText = (TextView) findViewById(R.id.physical_trend);
-        TextView socialText = (TextView) findViewById(R.id.social_trend);
+        ImageView academicIcon = (ImageView) findViewById(R.id.academic_icon);
+        ImageView emotionalIcon = (ImageView) findViewById(R.id.emotional_icon);
+        ImageView physicalIcon = (ImageView) findViewById(R.id.physical_icon);
+        ImageView socialIcon = (ImageView) findViewById(R.id.social_icon);
 
         if (AC.checkComplete()) {
             mComplete.setVisibility(View.VISIBLE);
@@ -96,13 +95,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             }
         });
 
-        settings.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(), SettingsActivity.class);
-                startActivity(intent);
-            }
-        });
 
         academicBar.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -112,7 +104,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             }
         });
 
-        academicText.setOnClickListener(new View.OnClickListener() {
+        academicIcon.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(getApplicationContext(), AcademicTrendsActivity.class);
@@ -128,7 +120,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             }
         });
 
-        emotionalText.setOnClickListener(new View.OnClickListener() {
+        emotionalIcon.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(getApplicationContext(), EmotionalTrendsActivity.class);
@@ -144,7 +136,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             }
         });
 
-        physicalText.setOnClickListener(new View.OnClickListener() {
+        physicalIcon.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(getApplicationContext(), PhysicalTrendsActivity.class);
@@ -160,7 +152,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             }
         });
 
-        socialText.setOnClickListener(new View.OnClickListener() {
+        socialIcon.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(getApplicationContext(), SocialTrendsActivity.class);
