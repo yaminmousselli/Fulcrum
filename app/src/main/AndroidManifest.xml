@@ -35,6 +35,7 @@
         <activity android:name=".EmotionalTrendsActivity" />
         <activity android:name=".PhysicalTrendsActivity" />
         <activity android:name=".SocialTrendsActivity" />
+        <activity android:name=".TermsAndConditionsActivity"></activity>
         <activity
             android:name=".nav_bar"
             android:label="@string/title_activity_nav_bar"
