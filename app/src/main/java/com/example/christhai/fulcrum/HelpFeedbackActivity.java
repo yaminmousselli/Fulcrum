@@ -84,6 +84,10 @@ public class HelpFeedbackActivity extends AppCompatActivity implements Navigatio
                 intent = new Intent(getApplicationContext(), MainActivity.class);
                 startActivity(intent);
                 return true;
+            case R.id.nav_sign_out:
+                intent = new Intent(getApplicationContext(), LoginActivity.class);
+                startActivity(intent);
+                return true;
             default:
                 DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
                 drawer.closeDrawer(GravityCompat.START);

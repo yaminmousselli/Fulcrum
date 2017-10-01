@@ -5,6 +5,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TextView;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.FirebaseDatabase;
@@ -28,6 +29,8 @@ public class LoginActivity extends AppCompatActivity {
     FirebaseDatabase database = FirebaseDatabase.getInstance();
     DatabaseReference myRef = database.getReference("message");
     private static final String TAG = "MyActivity";
+    private EditText password;
+    private EditText email;
 
     private boolean validate(String email, String password) {
         boolean valid = true;
@@ -64,7 +67,10 @@ public class LoginActivity extends AppCompatActivity {
                         @Override
                         public void onComplete(@NonNull Task<AuthResult> task) {
                             Log.d(TAG, "signInWithEmail:onComplete:" + task.isSuccessful());
-
+                            if (task.isSuccessful()) {
+                                Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+                                startActivity(intent);
+                            }
                             // If sign in fails, display a message to the user. If sign in succeeds
                             // the auth state listener will be notified and logic to handle the
                             // signed in user can be handled in the listener.
@@ -105,8 +111,8 @@ public class LoginActivity extends AppCompatActivity {
         TextView forgotPassword = (TextView) findViewById(R.id.forgotPassword);
 
         //These will be used later to check what was input by the user
-        final TextView email = (TextView) findViewById(R.id.email);
-        final TextView password = (TextView) findViewById(R.id.password);
+        email = (EditText) findViewById(R.id.email);
+        password = (EditText) findViewById(R.id.password);
 
 
         register.setOnClickListener(new View.OnClickListener() {
@@ -120,10 +126,7 @@ public class LoginActivity extends AppCompatActivity {
         login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-//                if (password.getText().toString().equals(myRef.getDatabase().getReference())) {
-                    Intent intent = new Intent(getApplicationContext(), MainActivity.class);
-                    startActivity(intent);
-//                }
+                signIn(email.toString().trim(), password.toString().trim());
 
             }
         });
