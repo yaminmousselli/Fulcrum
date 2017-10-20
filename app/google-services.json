@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "78067164310",
+    "firebase_url": "https://fulcrum-2b201.firebaseio.com",
+    "project_id": "fulcrum-2b201",
+    "storage_bucket": "fulcrum-2b201.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:78067164310:android:3173b251fd56d629",
+        "android_client_info": {
+          "package_name": "com.example.christhai.fulcrum"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "78067164310-pcm79u7nch36bppdh5voms3vkhse0eto.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.christhai.fulcrum",
+            "certificate_hash": "c486b8bab771b63c9888726b271b71d0cbb577d4"
+          }
+        },
+        {
+          "client_id": "78067164310-ptu49okmejl0rhosnsfdinf3bup8d96b.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCFlunTXHB6gEVg6NJ2hcMJeaw-YqOrS10"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "78067164310-ptu49okmejl0rhosnsfdinf3bup8d96b.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
