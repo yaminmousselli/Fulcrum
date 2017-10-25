@@ -102,18 +102,18 @@
         tools:layout_constraintRight_creator="1"
         tools:layout_constraintTop_creator="1" />
 
-    <ImageButton
-        android:id="@+id/academic_bar"
-        android:layout_width="0dp"
-        android:layout_height="48dp"
-        app:srcCompat="@color/yellow"
-        tools:layout_constraintRight_creator="1"
-        tools:layout_constraintBottom_creator="1"
-        app:layout_constraintBottom_toTopOf="@+id/emotional_bar"
-        app:layout_constraintRight_toRightOf="@+id/emotional_bar"
-        tools:layout_constraintLeft_creator="1"
-        app:layout_constraintLeft_toLeftOf="@+id/emotional_bar"
-        app:layout_constraintHorizontal_bias="0.0" />
+        <ImageButton
+            android:id="@+id/academic_bar"
+            android:layout_width="0dp"
+            android:layout_height="48dp"
+            app:layout_constraintBottom_toTopOf="@+id/emotional_bar"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintLeft_toLeftOf="@+id/emotional_bar"
+            app:layout_constraintRight_toRightOf="@+id/emotional_bar"
+            app:srcCompat="@color/green"
+            tools:layout_constraintBottom_creator="1"
+            tools:layout_constraintLeft_creator="1"
+            tools:layout_constraintRight_creator="1" />
 
     <ImageButton
         android:id="@+id/emotional_bar"
@@ -128,18 +128,18 @@
         app:layout_constraintLeft_toLeftOf="@+id/physical_bar"
         app:layout_constraintHorizontal_bias="0.0" />
 
-    <ImageButton
-        android:id="@+id/physical_bar"
-        android:layout_width="0dp"
-        android:layout_height="48dp"
-        app:srcCompat="@color/green"
-        tools:layout_constraintRight_creator="1"
-        tools:layout_constraintBottom_creator="1"
-        app:layout_constraintBottom_toTopOf="@+id/social_bar"
-        app:layout_constraintRight_toRightOf="@+id/social_bar"
-        tools:layout_constraintLeft_creator="1"
-        app:layout_constraintLeft_toLeftOf="@+id/social_bar"
-        app:layout_constraintHorizontal_bias="0.0" />
+        <ImageButton
+            android:id="@+id/physical_bar"
+            android:layout_width="0dp"
+            android:layout_height="48dp"
+            app:layout_constraintBottom_toTopOf="@+id/social_bar"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintLeft_toLeftOf="@+id/social_bar"
+            app:layout_constraintRight_toRightOf="@+id/social_bar"
+            app:srcCompat="@color/yellow"
+            tools:layout_constraintBottom_creator="1"
+            tools:layout_constraintLeft_creator="1"
+            tools:layout_constraintRight_creator="1" />
 
     <ImageButton
         android:id="@+id/social_bar"
