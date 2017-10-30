@@ -115,7 +115,7 @@ public class daily_assessment extends AppCompatActivity {
      */
     private void updateText() {
         mQuestionView.setText(AC.getQuestions(mQuestionNum));
-        String questionNum = "Question " + (mQuestionNum + 1);
+        String questionNum = (mQuestionNum + 1) + " out of 10";
         mQuestionNumView.setText(questionNum);
         mChoice1.setText(AC.getChoice1(mQuestionNum));
         mChoice2.setText(AC.getChoice2(mQuestionNum));
