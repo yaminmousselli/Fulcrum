@@ -7,11 +7,18 @@ import android.os.Bundle;
  * @author Team Atlas
  * @version 1.0
 */
-public class AcademicTrendsActivity extends AppCompatActivity {
+public class AcademicTrendsActivity extends BaseActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_academic_trends);
+    }
+
+    @Override
+    protected void onResume() {
+        setContentView(R.layout.activity_academic_trends);
+        super.onResume();
+        super.getToolbar().setTitle("Academic Trends");
     }
 }
