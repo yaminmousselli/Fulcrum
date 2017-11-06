@@ -4,7 +4,7 @@ import android.os.Parcel;
 import android.os.Parcelable;
 
 /** Represents the back end for the daily assessment page.
- * @author Team Atlas
+ * @author Team All-Star
  * @version 1.0
 */
 
