@@ -30,6 +30,7 @@ public class daily_assessment extends AppCompatActivity {
     private RadioButton mChoice5;
 
     private SeekBar mAnswer;
+    private TextView mAnswerText;
 
     private Button mNext;
 
@@ -59,6 +60,7 @@ public class daily_assessment extends AppCompatActivity {
 
 
         mAnswer = (SeekBar) findViewById(R.id.assessmentSeekBar);
+        mAnswerText = (TextView) findViewById(R.id.mAnswerText);
 
         mNext = (Button) findViewById(R.id.next);
         final Button mPrev = (Button) findViewById(R.id.prev);
@@ -117,11 +119,46 @@ public class daily_assessment extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
+        mAnswer.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+
+            @Override
+            public void onStopTrackingTouch (SeekBar seekBar){
+                // TODO Auto-generated method stub
+            }
+
+            @Override
+            public void onStartTrackingTouch (SeekBar seekBar){
+                // TODO Auto-generated method stub
+            }
+
+            @Override
+            public void onProgressChanged (SeekBar seekBar,int progress, boolean fromUser){
+                // TODO Auto-generated method stub
+            if(progress == 0) {
+                mAnswerText.setText(AC.getChoice1(mQuestionNum));
+            } else if (progress == 1) {
+                mAnswerText.setText(AC.getChoice2(mQuestionNum));
+            } else if (progress == 2) {
+                mAnswerText.setText(AC.getChoice3(mQuestionNum));
+            } else if (progress == 3) {
+                mAnswerText.setText(AC.getChoice4(mQuestionNum));
+            } else if (progress == 4) {
+                mAnswerText.setText(AC.getChoice5(mQuestionNum));
+            } else {
+
+            }
+
+
+            }
+        });
     }
 
-    /**
-     * Helper function to write new text.
-     */
+
+
+        /**
+         * Helper function to write new text.
+         */
     private void updateText() {
         mQuestionView.setText(AC.getQuestions(mQuestionNum));
         String questionNum = "Question " + (mQuestionNum + 1) + " out of 10";
@@ -131,6 +168,9 @@ public class daily_assessment extends AppCompatActivity {
         mChoice3.setText(AC.getChoice3(mQuestionNum));
         mChoice4.setText(AC.getChoice4(mQuestionNum));
         mChoice5.setText(AC.getChoice5(mQuestionNum));
+
+        mAnswerText.setText(AC.getChoice3(mQuestionNum));
+
         if (mQuestionNum == 9) {
             mNext.setText("Submit");
         }
