@@ -100,7 +100,6 @@ public class TrendsListAdapter extends BaseExpandableListAdapter {
         }
         TextView lblListHeader = (TextView) convertView
                 .findViewById(R.id.submenu);
-        lblListHeader.setTypeface(null, Typeface.BOLD);
         lblListHeader.setText(headerTitle);
         if (getChildrenCount(groupPosition) == 0) {
         }
