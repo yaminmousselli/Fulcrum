@@ -3,12 +3,14 @@ package com.example.christhai.fulcrum;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Typeface;
+import android.media.Image;
 import android.support.v7.app.AppCompatActivity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseExpandableListAdapter;
 import android.widget.ExpandableListView;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import java.util.HashMap;
@@ -101,6 +103,31 @@ public class TrendsListAdapter extends BaseExpandableListAdapter {
         TextView lblListHeader = (TextView) convertView
                 .findViewById(R.id.submenu);
         lblListHeader.setText(headerTitle);
+
+        ImageView lblListImage = (ImageView) convertView.findViewById(R.id.submenu_icon);
+        switch (headerTitle) {
+            case "Home":
+                lblListImage.setImageResource(R.drawable.ham_home);
+                break;
+            case "Daily Assessment":
+                lblListImage.setImageResource(R.drawable.ham_daily);
+                break;
+            case "Overall Wellness":
+                lblListImage.setImageResource(R.drawable.ham_overall);
+                break;
+            case "Current Trends":
+                lblListImage.setImageResource(R.drawable.ham_curr);
+                break;
+            case "Settings":
+                lblListImage.setImageResource(R.drawable.ham_settings);
+                break;
+            case "Help & Feedback":
+                lblListImage.setImageResource(R.drawable.ham_help);
+                break;
+            case "Sign Out":
+                lblListImage.setImageResource(R.drawable.ham_signout);
+                break;
+        }
         if (getChildrenCount(groupPosition) == 0) {
         }
         return convertView;
@@ -119,6 +146,21 @@ public class TrendsListAdapter extends BaseExpandableListAdapter {
                 .findViewById(R.id.nav_current_trends_item);
 
         txtListChild.setText(childText);
+        ImageView lblListImage = (ImageView) convertView.findViewById(R.id.submenu_icon);
+        switch (childText) {
+            case "Emotional Trends":
+                lblListImage.setImageResource(R.drawable.ham_emotional);
+                break;
+            case "Physical Trends":
+                lblListImage.setImageResource(R.drawable.ham_phy);
+                break;
+            case "Academic Trends":
+                lblListImage.setImageResource(R.drawable.ham_academic);
+                break;
+            case "Social Trends":
+                lblListImage.setImageResource(R.drawable.ham_social);
+                break;
+        }
         return convertView;
     }
 
