@@ -19,7 +19,7 @@ import android.widget.Toast;
 import com.google.firebase.auth.FirebaseAuth;
 
 /** Represents the login page.
- * @author Team Atlas
+ * @author Team All-Star
  * @version 1.0
 */
 public class LoginActivity extends AppCompatActivity {

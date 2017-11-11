@@ -21,7 +21,7 @@ import android.widget.Spinner;
 import android.widget.TextView;
 
 /** Represents the settings page.
- * @author Team Atlas
+ * @author Team All-Star
  * @version 1.0
 */
 

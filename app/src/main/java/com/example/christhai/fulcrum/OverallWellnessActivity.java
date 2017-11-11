@@ -12,7 +12,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 
 /** Represents the overall wellness trends page.
- * @author Team Atlas
+ * @author Team All-Star
  * @version 1.0
 */
 

@@ -12,6 +12,11 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 
+/** Represents the help and feedback page.
+ * @author Team All-Star
+ * @version 1.0
+ */
+
 public class HelpFeedbackActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
     @Override

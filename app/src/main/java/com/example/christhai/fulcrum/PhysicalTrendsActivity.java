@@ -4,7 +4,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
 /** Represents the physical trends page.
- * @author Team Atlas
+ * @author Team All-Star
  * @version 1.0
 */
 public class PhysicalTrendsActivity extends AppCompatActivity {

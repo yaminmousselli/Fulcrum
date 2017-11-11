@@ -11,7 +11,7 @@ import android.widget.RadioGroup;
 import android.widget.TextView;
 
 /** Represents the daily assessment page.
- * @author Team Atlas
+ * @author Team All-Star
  * @version 1.0
 */
 public class daily_assessment extends AppCompatActivity {
