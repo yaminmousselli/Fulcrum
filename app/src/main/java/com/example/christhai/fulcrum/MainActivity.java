@@ -21,7 +21,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 /** Represents the home page.
- * @author Team Atlas
+ * @author Team All-Star
  * @version 1.0
 */
 public class MainActivity extends BaseActivity {
