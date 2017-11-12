@@ -126,6 +126,7 @@ public class RegisterActivity extends AppCompatActivity {
             public void onClick(View v) {
                 if (acceptTermsAndConditions.isChecked()){
                     Intent intent = new Intent(getApplicationContext(), LoginActivity.class);
+                    //Intent intent = new Intent(getApplicationContext(), PhyTrackerAuthActivity.class);
                     startActivity(intent);
                     User newUser = new User(firstName.getText().toString(),
                             lastName.getText().toString(),
