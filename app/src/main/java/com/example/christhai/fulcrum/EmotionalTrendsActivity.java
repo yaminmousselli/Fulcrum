@@ -8,11 +8,18 @@ import android.os.Bundle;
  * @version 1.0
 */
 
-public class EmotionalTrendsActivity extends AppCompatActivity {
+public class EmotionalTrendsActivity extends BaseActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_emotional_trends);
+    }
+
+    @Override
+    protected void onResume() {
+        setContentView(R.layout.activity_academic_trends);
+        super.onResume();
+        super.getToolbar().setTitle("Emotional Trends");
     }
 }
