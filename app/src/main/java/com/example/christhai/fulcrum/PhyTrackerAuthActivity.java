@@ -41,6 +41,12 @@ public class PhyTrackerAuthActivity extends AppCompatActivity implements OnDataP
     private TextView numCalories;
     private TextView physicalScore;
 
+    private boolean stepsRetrieved = false;
+    private boolean calRetrieved = false;
+
+    private int steps;
+    private float cals;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -73,25 +79,31 @@ public class PhyTrackerAuthActivity extends AppCompatActivity implements OnDataP
         numCalories = (TextView) findViewById(R.id.numCalories);
         physicalScore = (TextView) findViewById(R.id.calculatedScore);
 
+        stepsRetrieved = false;
+        calRetrieved = false;
+
         steps.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 //numSteps.setText(displayStepDataForToday());
                 //displayStepDataForToday();
                 System.out.println("DEBUGGGGG");
-                //new ViewTodaysStepCountTask().execute();
-                numSteps.setText("7593");
+                new ViewTodaysStepCountTask().execute();
+                //numSteps.setText("7593");
             }
         });
 
         calories.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                numCalories.setText("1500");
+
+                new ViewTodaysCalCountTask().execute();
+
+                //numCalories.setText("1500");
             }
         });
 
-        physicalScore.setText("8");
+        //physicalScore.setText("8");
     }
     @Override
     protected void onStart() {
@@ -169,12 +181,12 @@ public class PhyTrackerAuthActivity extends AppCompatActivity implements OnDataP
     }
 
     private String displayStepDataForToday() {
-        DailyTotalResult result = Fitness.HistoryApi.readDailyTotal( mApiClient, DataType.TYPE_STEP_COUNT_DELTA ).await(1, TimeUnit.MINUTES);
+        DailyTotalResult result = Fitness.HistoryApi.readDailyTotal( mApiClient, DataType.AGGREGATE_STEP_COUNT_DELTA ).await(1, TimeUnit.MINUTES);
 
         if (result.getStatus().isSuccess()) {
             DataSet totalSet = result.getTotal();
-            Log.e("History", "Data returned for Data type: " + totalSet.getDataType().getName() + "DataSet size: " + totalSet.getDataPoints().size());
-            return totalSet.isEmpty() ? "-1" : totalSet.getDataPoints().get(0).getValue(Field.FIELD_STEPS).asString();
+            Log.e("History", "Steps Data returned for Data type: " + totalSet.getDataType().getName() + "DataSet size: " + totalSet.getDataPoints().size() + "Num steps: " + totalSet.getDataPoints().get(0).getValue(Field.FIELD_STEPS));
+            return totalSet.isEmpty() ? "-1" : totalSet.getDataPoints().get(0).getValue(Field.FIELD_STEPS).asInt() + "";
         }
         //Toast.makeText(getApplicationContext(), "Steps: " + " Value: ", Toast.LENGTH_SHORT).show();
 
@@ -182,9 +194,85 @@ public class PhyTrackerAuthActivity extends AppCompatActivity implements OnDataP
         return "NOPE";
     }
 
-    private void updateText(String newText)
+    private String displayCalDataForToday() {
+        DailyTotalResult result = Fitness.HistoryApi.readDailyTotal( mApiClient, DataType.AGGREGATE_CALORIES_EXPENDED ).await(1, TimeUnit.MINUTES);
+
+        if (result.getStatus().isSuccess()) {
+            DataSet totalSet = result.getTotal();
+            Log.e("History", "Cal Data returned for Data type: " + totalSet.getDataType().getName() + "DataSet size: " + totalSet.getDataPoints().size() + "Num cals: " + totalSet.getDataPoints().get(0).getValue(Field.FIELD_CALORIES));
+            return totalSet.isEmpty() ? "-1" : totalSet.getDataPoints().get(0).getValue(Field.FIELD_CALORIES).asFloat() + "";
+        }
+        //Toast.makeText(getApplicationContext(), "Steps: " + " Value: ", Toast.LENGTH_SHORT).show();
+
+        showDataSet(result.getTotal());
+        return "NOPE";
+    }
+
+    private void updateStepText(String newText)
     {
         numSteps.setText(newText);
+        stepsRetrieved = true;
+        if (stepsRetrieved && calRetrieved) {
+            calculateScore();
+        }
+    }
+
+    private void updateCalText(String newText)
+    {
+        numCalories.setText(newText);
+        calRetrieved = true;
+        if (stepsRetrieved && calRetrieved) {
+            calculateScore();
+        }
+
+    }
+
+    private void calculateScore()
+    {
+        if (stepsRetrieved && calRetrieved)
+        {
+
+            Log.e("History", "Calculating Score: Steps: " + steps + " Cal: " + cals );
+
+            int stepScore = 0;
+            int calScore = 0;
+
+            if (steps < 4000)
+            {
+                stepScore = 1;
+            } else if (steps < 6000)
+            {
+                stepScore = 2;
+            } else if (steps < 8000)
+            {
+                stepScore = 3;
+            } else if (steps < 10000)
+            {
+                stepScore = 4;
+            } else if (steps >= 10000)
+            {
+                stepScore = 5;
+            }
+
+            if (cals < 800)
+            {
+                calScore = 1;
+            } else if (cals < 1200)
+            {
+                calScore = 2;
+            } else if (cals < 1600)
+            {
+                calScore = 3;
+            } else if (cals < 2000)
+            {
+                calScore = 4;
+            } else if (cals >= 2000)
+            {
+                calScore = 5;
+            }
+
+            physicalScore.setText(stepScore + calScore + "");
+        }
     }
 
     private class ViewTodaysStepCountTask extends AsyncTask<Void, Void, Void> {
@@ -194,7 +282,25 @@ public class PhyTrackerAuthActivity extends AppCompatActivity implements OnDataP
 
                 public void run() {
                     //HERE I WANT TO UPDATE MY TEXT VIEW
-                    updateText(temp);
+                    updateStepText(temp);
+                    steps = Integer.parseInt(temp);
+                }
+            });
+
+            //updateText(displayStepDataForToday());
+            return null;
+        }
+    }
+
+    private class ViewTodaysCalCountTask extends AsyncTask<Void, Void, Void> {
+        protected Void doInBackground(Void... params) {
+            final String temp = displayCalDataForToday();
+            runOnUiThread(new Runnable() {
+
+                public void run() {
+                    //HERE I WANT TO UPDATE MY TEXT VIEW
+                    updateCalText(temp);
+                    cals = Float.parseFloat(temp);
                 }
             });
 
