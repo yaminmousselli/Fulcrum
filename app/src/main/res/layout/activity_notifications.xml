@@ -35,8 +35,8 @@
 
     <Button
         android:id="@+id/banner_notification"
-        android:layout_width="0dp"
-        android:layout_height="55dp"
+        android:layout_width="112dp"
+        android:layout_height="56dp"
         android:text="Banner"
         android:textSize="18sp"
         app:layout_constraintRight_toLeftOf="@+id/alert_notification"

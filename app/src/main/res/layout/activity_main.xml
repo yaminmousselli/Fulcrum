@@ -77,12 +77,10 @@
         android:layout_height="48dp"
         android:text="Pretend This is a beautiful graph"
         app:layout_constraintRight_toRightOf="parent"
-        tools:layout_constraintBottom_creator="1"
         tools:layout_constraintRight_creator="1"
         android:layout_marginRight="54dp"
-        app:layout_constraintBottom_toTopOf="@+id/settings_temp"
         android:layout_marginEnd="54dp"
-        android:layout_marginBottom="13dp" />
+        tools:layout_editor_absoluteY="25dp" />
 
     <View
         android:id="@+id/view2"
@@ -102,18 +100,18 @@
         tools:layout_constraintRight_creator="1"
         tools:layout_constraintTop_creator="1" />
 
-    <ImageButton
-        android:id="@+id/academic_bar"
-        android:layout_width="0dp"
-        android:layout_height="48dp"
-        app:srcCompat="@color/yellow"
-        tools:layout_constraintRight_creator="1"
-        tools:layout_constraintBottom_creator="1"
-        app:layout_constraintBottom_toTopOf="@+id/emotional_bar"
-        app:layout_constraintRight_toRightOf="@+id/emotional_bar"
-        tools:layout_constraintLeft_creator="1"
-        app:layout_constraintLeft_toLeftOf="@+id/emotional_bar"
-        app:layout_constraintHorizontal_bias="0.0" />
+        <ImageButton
+            android:id="@+id/academic_bar"
+            android:layout_width="0dp"
+            android:layout_height="48dp"
+            app:layout_constraintBottom_toTopOf="@+id/emotional_bar"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintLeft_toLeftOf="@+id/emotional_bar"
+            app:layout_constraintRight_toRightOf="@+id/emotional_bar"
+            app:srcCompat="@color/green"
+            tools:layout_constraintBottom_creator="1"
+            tools:layout_constraintLeft_creator="1"
+            tools:layout_constraintRight_creator="1" />
 
     <ImageButton
         android:id="@+id/emotional_bar"
@@ -128,18 +126,18 @@
         app:layout_constraintLeft_toLeftOf="@+id/physical_bar"
         app:layout_constraintHorizontal_bias="0.0" />
 
-    <ImageButton
-        android:id="@+id/physical_bar"
-        android:layout_width="0dp"
-        android:layout_height="48dp"
-        app:srcCompat="@color/green"
-        tools:layout_constraintRight_creator="1"
-        tools:layout_constraintBottom_creator="1"
-        app:layout_constraintBottom_toTopOf="@+id/social_bar"
-        app:layout_constraintRight_toRightOf="@+id/social_bar"
-        tools:layout_constraintLeft_creator="1"
-        app:layout_constraintLeft_toLeftOf="@+id/social_bar"
-        app:layout_constraintHorizontal_bias="0.0" />
+        <ImageButton
+            android:id="@+id/physical_bar"
+            android:layout_width="0dp"
+            android:layout_height="48dp"
+            app:layout_constraintBottom_toTopOf="@+id/social_bar"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintLeft_toLeftOf="@+id/social_bar"
+            app:layout_constraintRight_toRightOf="@+id/social_bar"
+            app:srcCompat="@color/yellow"
+            tools:layout_constraintBottom_creator="1"
+            tools:layout_constraintLeft_creator="1"
+            tools:layout_constraintRight_creator="1" />
 
     <ImageButton
         android:id="@+id/social_bar"
@@ -194,8 +192,7 @@
         app:layout_constraintBottom_toTopOf="@+id/physical_icon"
         app:layout_constraintRight_toRightOf="@+id/academic_icon"
         tools:layout_constraintLeft_creator="1"
-        app:layout_constraintLeft_toLeftOf="@+id/academic_icon"
-        android:layout_marginBottom="-4dp" />
+        app:layout_constraintLeft_toLeftOf="@+id/academic_icon" />
 
     <ImageView
         android:id="@+id/social_icon"
@@ -220,8 +217,7 @@
         app:layout_constraintRight_toRightOf="@+id/emotional_icon"
         tools:layout_constraintLeft_creator="1"
         app:layout_constraintLeft_toLeftOf="@+id/emotional_icon"
-        app:layout_constraintHorizontal_bias="1.0"
-        android:layout_marginBottom="-2dp" />
+        app:layout_constraintHorizontal_bias="1.0" />
     </android.support.constraint.ConstraintLayout>
 
     <include
@@ -242,7 +238,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/nav_header_height"
             android:dividerHeight="0dp"
-            android:groupIndicator="@android:color/transparent"/>
+            android:groupIndicator="@android:color/transparent" />
 
     </android.support.design.widget.NavigationView>
 </android.support.v4.widget.DrawerLayout>
