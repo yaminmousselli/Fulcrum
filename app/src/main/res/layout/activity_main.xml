@@ -10,7 +10,16 @@
     <android.support.constraint.ConstraintLayout
         android:layout_height="match_parent"
         android:layout_width="match_parent">
-    <Button
+
+        <ImageView
+            android:id="@+id/Graph"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:srcCompat="@drawable/overall"
+            tools:layout_editor_absoluteY="-16dp"
+            tools:layout_editor_absoluteX="-15dp" />
+
+        <Button
         android:id="@+id/assessment"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -80,7 +89,7 @@
         tools:layout_constraintRight_creator="1"
         android:layout_marginRight="54dp"
         android:layout_marginEnd="54dp"
-        tools:layout_editor_absoluteY="25dp" />
+        tools:layout_editor_absoluteY="50dp" />
 
     <View
         android:id="@+id/view2"
@@ -234,11 +243,12 @@
         app:headerLayout="@layout/nav_header_nav_bar">
         <ExpandableListView
             android:id="@+id/navigationmenu"
-            android:layout_width="match_parent"
+            android:layout_width="264dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/nav_header_height"
             android:dividerHeight="0dp"
-            android:groupIndicator="@android:color/transparent" />
+            android:groupIndicator="@android:color/transparent"
+            tools:layout_editor_absoluteY="185dp"
+            tools:layout_editor_absoluteX="8dp" />
 
     </android.support.design.widget.NavigationView>
 </android.support.v4.widget.DrawerLayout>
