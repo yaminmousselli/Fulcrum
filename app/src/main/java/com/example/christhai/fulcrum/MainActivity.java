@@ -28,6 +28,7 @@ public class MainActivity extends BaseActivity {
 
 
     private AssessmentController AC = new AssessmentController();
+    private DatabaseController DC = new DatabaseController();
     private int mQuestionNum;
     private ExpandableListView submenu;
     private ExpandableListAdapter currAdapter;
@@ -61,7 +62,7 @@ public class MainActivity extends BaseActivity {
         ImageView physicalIcon = (ImageView) findViewById(R.id.physical_icon);
         ImageView socialIcon = (ImageView) findViewById(R.id.social_icon);
 
-        if (AC.checkComplete()) {
+        if (DC.checkComplete()) {
             mComplete.setVisibility(View.VISIBLE);
             mAssessment.setText("Complete!");
         } else {
@@ -72,10 +73,10 @@ public class MainActivity extends BaseActivity {
         mAssessment.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (!AC.checkComplete()) {
+                if (!DC.checkComplete()) {
                     Intent intent = new Intent(getApplicationContext(), daily_assessment.class);
-                    intent.putExtra("AC", AC);
-                    intent.putExtra("questionNum", mQuestionNum);
+//                    intent.putExtra("AC", AC);
+//                    intent.putExtra("questionNum", mQuestionNum);
                     startActivity(intent);
                 }
             }

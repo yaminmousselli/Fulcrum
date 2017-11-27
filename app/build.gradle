@@ -2,14 +2,6 @@ apply plugin: 'com.android.application'
 
 
 android {
-    signingConfigs {
-        config {
-            keyAlias 'androiddebugkey'
-            keyPassword 'android'
-            storeFile file('C:/Users/Jarrett/.android/debug.keystore')
-            storePassword 'android'
-        }
-    }
     compileSdkVersion 25
     buildToolsVersion "26.0.0"
     defaultConfig {
@@ -24,9 +16,6 @@ android {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
-        }
-        debug {
-            signingConfig signingConfigs.config
         }
     }
 }

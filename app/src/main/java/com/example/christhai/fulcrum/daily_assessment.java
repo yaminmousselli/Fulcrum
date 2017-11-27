@@ -18,6 +18,7 @@ import android.widget.TextView;
 public class daily_assessment extends AppCompatActivity {
 
     private AssessmentController AC = new AssessmentController();
+    private DatabaseController DC = new DatabaseController();
 
     private TextView mQuestionView;
     private TextView mQuestionNumView;
@@ -45,8 +46,12 @@ public class daily_assessment extends AppCompatActivity {
     protected void onResume() {
         super.onResume();
         setContentView(R.layout.activity_daily_assessment);
-        AC = new AssessmentController();
-
+        Score score = DC.readScore();
+        if (score != null) {
+            AC = new AssessmentController(score.getScores());
+        } else {
+            AC = new AssessmentController();
+        }
         mQuestionView = (TextView) findViewById(R.id.question);
         mQuestionNumView = (TextView) findViewById(R.id.questionNum);
 
@@ -66,7 +71,7 @@ public class daily_assessment extends AppCompatActivity {
         final Button mPrev = (Button) findViewById(R.id.prev);
         Button mSave = (Button) findViewById(R.id.save);
 
-        getParcel();
+//        getParcel();
         mNext.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -79,15 +84,16 @@ public class daily_assessment extends AppCompatActivity {
                     checkScores();
                 } else if (mQuestionNum == 9) {
                     updateScores();
-                    if (AC.checkComplete()) {
-                        Bundle b = new Bundle();
+//                    if (DC.checkComplete()) {
+//                        Bundle b = new Bundle();
+                        DC.pushScores(AC, true);
                         Intent intent = new Intent();
-                        b.putParcelable("AC", AC);
-                        b.putInt("questionNum", mQuestionNum);
-                        intent.putExtras(b);
+//                        b.putParcelable("AC", AC);
+//                        b.putInt("questionNum", mQuestionNum);
+//                        intent.putExtras(b);
                         intent.setClass(getApplicationContext(),MainActivity.class);
                         startActivity(intent);
-                    }
+//                    }
                 }
             }
         });
@@ -113,9 +119,10 @@ public class daily_assessment extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 updateScores();
+                DC.pushScores(AC, false);
                 Intent intent = new Intent(getApplicationContext(),MainActivity.class);
-                intent.putExtra("AC", AC);
-                intent.putExtra("questionNum", mQuestionNum);
+//                intent.putExtra("AC", AC);
+//                intent.putExtra("questionNum", mQuestionNum);
                 startActivity(intent);
             }
         });
