@@ -267,12 +267,11 @@
         app:headerLayout="@layout/nav_header_nav_bar">
         <ExpandableListView
             android:id="@+id/navigationmenu"
-            android:layout_width="264dp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/nav_header_height"
             android:dividerHeight="0dp"
-            android:groupIndicator="@android:color/transparent"
-            tools:layout_editor_absoluteY="25dp"
-            tools:layout_editor_absoluteX="0dp" />
+            android:groupIndicator="@android:color/transparent"/>
 
     </android.support.design.widget.NavigationView>
 </android.support.v4.widget.DrawerLayout>
