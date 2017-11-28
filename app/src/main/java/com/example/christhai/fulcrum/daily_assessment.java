@@ -46,12 +46,10 @@ public class daily_assessment extends AppCompatActivity {
     protected void onResume() {
         super.onResume();
         setContentView(R.layout.activity_daily_assessment);
-        Score score = DC.readScore();
-        if (score != null) {
-            AC = new AssessmentController(score.getScores());
-        } else {
-            AC = new AssessmentController();
-        }
+        DC = new DatabaseController();
+        AC = new AssessmentController();
+        DC.readScore(AC);
+        System.out.println("TEST ASYNC");
         mQuestionView = (TextView) findViewById(R.id.question);
         mQuestionNumView = (TextView) findViewById(R.id.questionNum);
 
@@ -70,7 +68,7 @@ public class daily_assessment extends AppCompatActivity {
         mNext = (Button) findViewById(R.id.next);
         final Button mPrev = (Button) findViewById(R.id.prev);
         Button mSave = (Button) findViewById(R.id.save);
-
+        checkScores();
 //        getParcel();
         mNext.setOnClickListener(new View.OnClickListener() {
             @Override

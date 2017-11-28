@@ -94,6 +94,12 @@ public class AssessmentController{
         return scores;
     }
 
+    public void setList(List<Integer> scores) {
+        for(int i = 0; i < 10; i++) {
+            this.scores[i] = scores.get(i);
+        }
+    }
+
 //    @Override
 //    public int describeContents() {
 //        return 0;

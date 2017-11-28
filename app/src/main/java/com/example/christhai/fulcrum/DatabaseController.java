@@ -60,6 +60,7 @@ public class DatabaseController {
         }
         Date currentDate = Calendar.getInstance().getTime();
         String date = sdf.format(currentDate);
+        System.out.println("DATE IS" + date);
         Integer academicScore = calcAcademic(scores);
         Integer emotionalScore = calcEmotional(scores);
         Integer physicalScore = calcPhysical(scores);
@@ -80,49 +81,45 @@ public class DatabaseController {
         email = encodeEmail(email);
         Date currentDate = Calendar.getInstance().getTime();
         final String date = sdf.format(currentDate);
+
         final DatabaseReference mDatabaseReference = FirebaseDatabase.getInstance().getReference()
-                .child(email);
-        final boolean[] result = {false};
-        mDatabaseReference.addListenerForSingleValueEvent(new ValueEventListener() {
+                .child("Users").child(email).child(date);
+        final Score result = new Score();
+        result.setComplete(false);
+        mDatabaseReference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
-                // Get Post object and use the values to update the UI
-                if (dataSnapshot.hasChild(date)) {
-                    Score scores = dataSnapshot.getValue(Score.class);
-                    if (scores.isComplete()) {
-                        result[0] = true;
-                    } else {
-                        result[0] = false;
+                if (dataSnapshot.getChildrenCount() > 0) {
+                    Score score = dataSnapshot.getValue(Score.class);
+                    if (score.isComplete()) {
+                        result.setComplete(true);
                     }
-                } else {
-                    result[0] = false;
                 }
             }
             @Override
             public void onCancelled(DatabaseError databaseError) {
-               result[0] = false;
+                System.out.println("ERROR ERROR");
             }
         });
-        return result[0];
+
+        return result.isComplete();
     }
 
-    public Score readScore() {
+    public void readScore(final AssessmentController AC) {
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
         String email = user.getEmail();
         email = encodeEmail(email);
-        Date currentDate = Calendar.getInstance().getTime();
+        final Date currentDate = Calendar.getInstance().getTime();
         final String date = sdf.format(currentDate);
         DatabaseReference mDatabaseReference = FirebaseDatabase.getInstance().getReference()
-                .child(email);
-        final Score[] scores = new Score[1];
-        mDatabaseReference.addListenerForSingleValueEvent(new ValueEventListener() {
+                .child("Users").child(email).child(date);
+        mDatabaseReference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
-                // Get Post object and use the values to update the UI
-                if (dataSnapshot.hasChild(date)) {
-                    scores[0] = dataSnapshot.getValue(Score.class);
-                } else {
-                    scores[0] = null;
+                if (dataSnapshot.getChildrenCount() > 0) {
+                    Score score = dataSnapshot.getValue(Score.class);
+                    AC.setList(score.getScores());
+                    System.out.println("Scores are " + score.getScores().toString());
                 }
             }
             @Override
@@ -130,7 +127,7 @@ public class DatabaseController {
                 Log.w(TAG, "readScore:onCancelled", databaseError.toException());
             }
         });
-        return scores[0];
+
     }
     private String encodeEmail(String email) {
         return email.replaceAll("\\.", ",");
