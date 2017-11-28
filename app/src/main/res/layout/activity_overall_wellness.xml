@@ -19,10 +19,20 @@
             tools:layout_constraintTop_creator="1"
             tools:layout_constraintRight_creator="1"
             app:layout_constraintRight_toRightOf="parent"
-            android:layout_marginTop="16dp"
+            android:layout_marginTop="79dp"
             tools:layout_constraintLeft_creator="1"
             app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintHorizontal_bias="0.504" />
+
+        <com.jjoe64.graphview.GraphView
+            android:id="@+id/overallWellnessGraph"
+            android:layout_width="350dp"
+            android:layout_height="300dp"
+            android:layout_marginTop="24dp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView15" />
 
         <DatePicker
             android:id="@+id/datePicker2"
@@ -56,11 +66,12 @@
         app:headerLayout="@layout/nav_header_nav_bar">
         <ExpandableListView
             android:id="@+id/navigationmenu"
-            android:layout_width="match_parent"
+            android:layout_width="264dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/nav_header_height"
             android:dividerHeight="0dp"
-            android:groupIndicator="@android:color/transparent"/>
+            android:groupIndicator="@android:color/transparent"
+            tools:layout_editor_absoluteY="25dp"
+            tools:layout_editor_absoluteX="0dp" />
 
     </android.support.design.widget.NavigationView>
 
