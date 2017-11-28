@@ -19,6 +19,9 @@ import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
+import com.jjoe64.graphview.*;
+import com.jjoe64.graphview.series.LineGraphSeries;
+import com.jjoe64.graphview.series.DataPoint;
 
 /** Represents the settings page.
  * @author Team Atlas
@@ -39,7 +42,15 @@ public class SettingsActivity extends BaseActivity {
         setContentView(R.layout.activity_settings);
         super.onResume();
         super.getToolbar().setTitle("Settings");
-
+        GraphView graph = (GraphView) findViewById(R.id.graph);
+        LineGraphSeries<DataPoint> series = new LineGraphSeries<>(new DataPoint[] {
+                new DataPoint(0, 1),
+                new DataPoint(1, 5),
+                new DataPoint(2, 3),
+                new DataPoint(3, 2),
+                new DataPoint(4, 6)
+        });
+        graph.addSeries(series);
 
         TextView account = (TextView) findViewById(R.id.account_settings);
         TextView notifications = (TextView) findViewById(R.id.notifications);
