@@ -27,8 +27,7 @@
             app:layout_constraintBottom_toTopOf="@+id/notifications"
             app:layout_constraintLeft_toLeftOf="parent"
             tools:layout_constraintBottom_creator="1"
-            tools:layout_constraintLeft_creator="1"
-            tools:layout_constraintTop_creator="1" />
+            tools:layout_constraintLeft_creator="1" />
 
         <TextView
             android:id="@+id/notifications"
@@ -58,7 +57,10 @@
             app:layout_constraintLeft_toLeftOf="parent"
             android:layout_marginLeft="16dp" />
     </android.support.constraint.ConstraintLayout>
-
+    <com.jjoe64.graphview.GraphView
+        android:layout_width="match_parent"
+        android:layout_height="200dip"
+        android:id="@+id/graph" />
     <include
         layout="@layout/app_bar_nav_bar"
         android:layout_width="match_parent"
@@ -73,11 +75,12 @@
         app:headerLayout="@layout/nav_header_nav_bar">
         <ExpandableListView
             android:id="@+id/navigationmenu"
-            android:layout_width="match_parent"
+            android:layout_width="264dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/nav_header_height"
             android:dividerHeight="0dp"
-            android:groupIndicator="@android:color/transparent"/>
+            android:groupIndicator="@android:color/transparent"
+            tools:layout_editor_absoluteY="185dp"
+            tools:layout_editor_absoluteX="8dp" />
 
     </android.support.design.widget.NavigationView>
 </android.support.v4.widget.DrawerLayout>
