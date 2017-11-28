@@ -17,7 +17,7 @@ public class SocialTrendsActivity extends BaseActivity {
 
     @Override
     protected void onResume() {
-        setContentView(R.layout.activity_academic_trends);
+        setContentView(R.layout.activity_social_trends);
         super.onResume();
         super.getToolbar().setTitle("Social Trends");
     }

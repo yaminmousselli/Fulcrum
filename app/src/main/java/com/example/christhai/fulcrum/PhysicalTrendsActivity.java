@@ -17,7 +17,7 @@ public class PhysicalTrendsActivity extends BaseActivity {
 
     @Override
     protected void onResume() {
-        setContentView(R.layout.activity_academic_trends);
+        setContentView(R.layout.activity_physical_trends);
         super.onResume();
         super.getToolbar().setTitle("Physical Trends");
     }

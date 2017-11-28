@@ -18,7 +18,7 @@ public class EmotionalTrendsActivity extends BaseActivity {
 
     @Override
     protected void onResume() {
-        setContentView(R.layout.activity_academic_trends);
+        setContentView(R.layout.activity_emotional_trends);
         super.onResume();
         super.getToolbar().setTitle("Emotional Trends");
     }
