@@ -69,8 +69,8 @@ public class PhyTrackerAuthActivity extends AppCompatActivity implements OnDataP
         super.onResume();
         setContentView(R.layout.activity_phy_tracker_auth);
 
-        Button steps = (Button) findViewById(R.id.getStepsButton);
-        Button calories = (Button) findViewById(R.id.getCaloriesButton);
+        Button stepsButton = (Button) findViewById(R.id.getStepsButton);
+        Button caloriesButton = (Button) findViewById(R.id.getCaloriesButton);
 
         //TextView numSteps = (TextView) findViewById(R.id.numSteps);
         //TextView numCalories = (TextView) findViewById(R.id.numCalories);
@@ -79,10 +79,12 @@ public class PhyTrackerAuthActivity extends AppCompatActivity implements OnDataP
         numCalories = (TextView) findViewById(R.id.numCalories);
         physicalScore = (TextView) findViewById(R.id.calculatedScore);
 
+        //steps = 0;
+        //cals = 0;
         stepsRetrieved = false;
         calRetrieved = false;
 
-        steps.setOnClickListener(new View.OnClickListener() {
+        stepsButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 //numSteps.setText(displayStepDataForToday());
@@ -93,7 +95,7 @@ public class PhyTrackerAuthActivity extends AppCompatActivity implements OnDataP
             }
         });
 
-        calories.setOnClickListener(new View.OnClickListener() {
+        caloriesButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
@@ -196,11 +198,13 @@ public class PhyTrackerAuthActivity extends AppCompatActivity implements OnDataP
 
     private String displayCalDataForToday() {
         DailyTotalResult result = Fitness.HistoryApi.readDailyTotal( mApiClient, DataType.AGGREGATE_CALORIES_EXPENDED ).await(1, TimeUnit.MINUTES);
+        //DailyTotalResult result = Fitness.HistoryApi.readDailyTotal( mApiClient, DataType.TYPE_CALORIES_EXPENDED ).await(1, TimeUnit.MINUTES);
 
         if (result.getStatus().isSuccess()) {
             DataSet totalSet = result.getTotal();
             Log.e("History", "Cal Data returned for Data type: " + totalSet.getDataType().getName() + "DataSet size: " + totalSet.getDataPoints().size() + "Num cals: " + totalSet.getDataPoints().get(0).getValue(Field.FIELD_CALORIES));
-            return totalSet.isEmpty() ? "-1" : totalSet.getDataPoints().get(0).getValue(Field.FIELD_CALORIES).asFloat() + "";
+            //return totalSet.isEmpty() ? "-1" : totalSet.getDataPoints().get(0).getValue(Field.FIELD_CALORIES).asFloat() + "";
+            return totalSet.isEmpty() ? "-1" : totalSet.getDataPoints().get(0).getValue(Field.FIELD_CALORIES) + "";
         }
         //Toast.makeText(getApplicationContext(), "Steps: " + " Value: ", Toast.LENGTH_SHORT).show();
 
@@ -210,7 +214,7 @@ public class PhyTrackerAuthActivity extends AppCompatActivity implements OnDataP
 
     private void updateStepText(String newText)
     {
-        numSteps.setText(newText);
+        numSteps.setText("Steps: " + newText);
         stepsRetrieved = true;
         if (stepsRetrieved && calRetrieved) {
             calculateScore();
@@ -219,7 +223,7 @@ public class PhyTrackerAuthActivity extends AppCompatActivity implements OnDataP
 
     private void updateCalText(String newText)
     {
-        numCalories.setText(newText);
+        numCalories.setText("Calories: " + newText);
         calRetrieved = true;
         if (stepsRetrieved && calRetrieved) {
             calculateScore();
@@ -301,6 +305,8 @@ public class PhyTrackerAuthActivity extends AppCompatActivity implements OnDataP
                     //HERE I WANT TO UPDATE MY TEXT VIEW
                     updateCalText(temp);
                     cals = Float.parseFloat(temp);
+                    //cals = 42f;
+                    //updateCalText(cals + "");
                 }
             });
 

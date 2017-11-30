@@ -29,13 +29,13 @@ public class EmotionalTrendsActivity extends BaseActivity {
         super.getToolbar().setTitle("Emotional Trends");
         GraphView overallWellnessGraph = (GraphView) findViewById(R.id.emotionalWellnessGraph);
         LineGraphSeries<DataPoint> overallWellnessSeries = new LineGraphSeries<>(new DataPoint[] {
-                new DataPoint(0, 8),
-                new DataPoint(1, 7),
-                new DataPoint(2, 8),
-                new DataPoint(3, 5),
-                new DataPoint(4, 6),
-                new DataPoint(5, 4),
-                new DataPoint(6, 3)
+                new DataPoint(0, 7),
+                new DataPoint(1, 8),
+                new DataPoint(2, 6),
+                new DataPoint(3, 7),
+                new DataPoint(4, 5),
+                new DataPoint(5, 3),
+                new DataPoint(6, 2)
         });
         overallWellnessGraph.getViewport().setXAxisBoundsManual(true);
         overallWellnessGraph.getViewport().setMinX(-0.5);
@@ -46,7 +46,7 @@ public class EmotionalTrendsActivity extends BaseActivity {
         overallWellnessSeries.setColor(Color.rgb(204, 0, 0));
 
         StaticLabelsFormatter staticLabelsFormatter1 = new StaticLabelsFormatter(overallWellnessGraph);
-        staticLabelsFormatter1.setHorizontalLabels(new String[] {"","","", "11/22 - 11/28", "", "", ""});
+        staticLabelsFormatter1.setHorizontalLabels(new String[] {"","","", "11/23 - 11/29", "", "", ""});
         staticLabelsFormatter1.setViewport(overallWellnessGraph.getViewport());
         overallWellnessGraph.getGridLabelRenderer().setLabelFormatter(staticLabelsFormatter1);
 

@@ -11,6 +11,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
+import android.widget.DatePicker;
 
 import com.jjoe64.graphview.GraphView;
 import com.jjoe64.graphview.ValueDependentColor;
@@ -18,6 +19,8 @@ import com.jjoe64.graphview.helper.StaticLabelsFormatter;
 import com.jjoe64.graphview.series.BarGraphSeries;
 import com.jjoe64.graphview.series.DataPoint;
 import com.jjoe64.graphview.series.LineGraphSeries;
+
+import java.util.Calendar;
 
 /** Represents the overall wellness trends page.
  * @author Team Atlas
@@ -39,14 +42,38 @@ public class OverallWellnessActivity extends BaseActivity {
         super.getToolbar().setTitle("Overall Wellness");
 
 
-        GraphView individualWellnessGraph = (GraphView) findViewById(R.id.overallWellnessGraph);
-        individualWellnessGraph.setTitle("Score: 16/40");
-        BarGraphSeries<DataPoint> individualWellnessSeries = new BarGraphSeries<>(new DataPoint[] {
+        DatePicker datePicker = (DatePicker) findViewById(R.id.overall_wellness_date_picker);
+        final int day = datePicker.getDayOfMonth();
+        int month = datePicker.getMonth() + 1;
+        int year = datePicker.getYear();
+
+        Calendar calendar = Calendar.getInstance();
+        calendar.setTimeInMillis(System.currentTimeMillis());
+        /*datePicker.init(calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH), calendar.get(Calendar.DAY_OF_MONTH), new DatePicker.OnDateChangedListener() {
+
+            @Override
+            public void onDateChanged(DatePicker datePicker, int year, int month, int dayOfMonth) {
+                //Log.d("Date", "Year=" + year + " Month=" + (month + 1) + " day=" + dayOfMonth);
+                if(day == 28) {
+
+                } else if (day == 27) {
+
+                } else if (day == 26) {
+
+                }
+            }
+        }); */
+
+
+
+        final GraphView individualWellnessGraph = (GraphView) findViewById(R.id.overallWellnessGraph);
+        individualWellnessGraph.setTitle("Score: 15/40");
+        final BarGraphSeries<DataPoint> individualWellnessSeries = new BarGraphSeries<>(new DataPoint[] {
                 new DataPoint(0, 0),
-                new DataPoint(1, 5),
-                new DataPoint(2, 3),
-                new DataPoint(3, 2),
-                new DataPoint(4, 6)
+                new DataPoint(1, 9),
+                new DataPoint(2, 2),
+                new DataPoint(3, 3),
+                new DataPoint(4, 1)
         });
         individualWellnessSeries.setSpacing(20);
         individualWellnessGraph.getViewport().setXAxisBoundsManual(true);
@@ -75,6 +102,110 @@ public class OverallWellnessActivity extends BaseActivity {
         });
 
         individualWellnessGraph.addSeries(individualWellnessSeries);
+
+
+        final BarGraphSeries<DataPoint> individualWellnessSeries2 = new BarGraphSeries<>(new DataPoint[] {
+                new DataPoint(0, 0),
+                new DataPoint(1, 7),
+                new DataPoint(2, 3),
+                new DataPoint(3, 4),
+                new DataPoint(4, 4)
+        });
+        individualWellnessSeries2.setSpacing(20);
+
+        individualWellnessSeries2.setValueDependentColor(new ValueDependentColor<DataPoint>() {
+            @Override
+            public int get(DataPoint data) {
+                switch ((int)data.getX()) {
+                    case 1:  return Color.rgb(115, 255, 0);
+                    case 2:  return Color.rgb(204, 0, 0);
+                    case 3:  return Color.rgb(255, 242, 0);
+                    case 4:  return Color.rgb(135, 206, 235);
+
+                }
+                return 99;
+            }
+        });
+
+
+        final BarGraphSeries<DataPoint> individualWellnessSeries3 = new BarGraphSeries<>(new DataPoint[] {
+                new DataPoint(0, 0),
+                new DataPoint(1, 5),
+                new DataPoint(2, 5),
+                new DataPoint(3, 6),
+                new DataPoint(4, 7)
+        });
+        individualWellnessSeries3.setSpacing(20);
+
+        individualWellnessSeries3.setValueDependentColor(new ValueDependentColor<DataPoint>() {
+            @Override
+            public int get(DataPoint data) {
+                switch ((int)data.getX()) {
+                    case 1:  return Color.rgb(115, 255, 0);
+                    case 2:  return Color.rgb(204, 0, 0);
+                    case 3:  return Color.rgb(255, 242, 0);
+                    case 4:  return Color.rgb(135, 206, 235);
+
+                }
+                return 99;
+            }
+        });
+
+
+        final BarGraphSeries<DataPoint> individualWellnessSeries4 = new BarGraphSeries<>(new DataPoint[] {
+                new DataPoint(0, 0),
+                new DataPoint(1, 4),
+                new DataPoint(2, 7),
+                new DataPoint(3, 8),
+                new DataPoint(4, 9)
+        });
+        individualWellnessSeries4.setSpacing(20);
+
+        individualWellnessSeries4.setValueDependentColor(new ValueDependentColor<DataPoint>() {
+            @Override
+            public int get(DataPoint data) {
+                switch ((int)data.getX()) {
+                    case 1:  return Color.rgb(115, 255, 0);
+                    case 2:  return Color.rgb(204, 0, 0);
+                    case 3:  return Color.rgb(255, 242, 0);
+                    case 4:  return Color.rgb(135, 206, 235);
+
+                }
+                return 99;
+            }
+        });
+
+        //individualWellnessGraph.removeAllSeries();
+        //individualWellnessGraph.addSeries(individualWellnessSeries2);
+
+
+        datePicker.init(calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH), calendar.get(Calendar.DAY_OF_MONTH), new DatePicker.OnDateChangedListener() {
+
+            @Override
+            public void onDateChanged(DatePicker datePicker, int year, int month, int dayOfMonth) {
+                //Log.d("Date", "Year=" + year + " Month=" + (month + 1) + " day=" + dayOfMonth);
+                if(datePicker.getDayOfMonth() == 29) {
+                    individualWellnessGraph.removeAllSeries();
+                    individualWellnessGraph.addSeries(individualWellnessSeries);
+                    individualWellnessGraph.setTitle("Score: 15/40");
+                } else if (datePicker.getDayOfMonth() == 28) {
+                    individualWellnessGraph.removeAllSeries();
+                    individualWellnessGraph.addSeries(individualWellnessSeries2);
+                    individualWellnessGraph.setTitle("Score: 18/40");
+                } else if (datePicker.getDayOfMonth() == 27) {
+                    individualWellnessGraph.removeAllSeries();
+                    individualWellnessGraph.addSeries(individualWellnessSeries3);
+                    individualWellnessGraph.setTitle("Score: 23/40");
+                } else if (datePicker.getDayOfMonth() == 26) {
+                    individualWellnessGraph.removeAllSeries();
+                    individualWellnessGraph.addSeries(individualWellnessSeries4);
+                    individualWellnessGraph.setTitle("Score: 28/40");
+                } else {
+                    individualWellnessGraph.removeAllSeries();
+                    individualWellnessGraph.setTitle("Score: N/A");
+                }
+            }
+        });
     }
 
 

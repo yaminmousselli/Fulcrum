@@ -25,18 +25,19 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintHorizontal_bias="0.502" />
 
-    <ImageView
-        android:id="@+id/complete"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:srcCompat="@android:drawable/checkbox_on_background"
-        tools:layout_constraintBottom_creator="1"
-        android:layout_marginStart="8dp"
-        app:layout_constraintBottom_toBottomOf="@+id/assessment"
-        tools:layout_constraintLeft_creator="1"
-        android:layout_marginBottom="12dp"
-        app:layout_constraintLeft_toRightOf="@+id/assessment"
-        android:layout_marginLeft="8dp" />
+        <ImageView
+            android:id="@+id/complete"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="12dp"
+            android:layout_marginLeft="8dp"
+            android:layout_marginStart="8dp"
+            android:visibility="visible"
+            app:layout_constraintBottom_toBottomOf="@+id/assessment"
+            app:layout_constraintLeft_toRightOf="@+id/assessment"
+            app:srcCompat="@android:drawable/checkbox_on_background"
+            tools:layout_constraintBottom_creator="1"
+            tools:layout_constraintLeft_creator="1" />
 
         <View
         android:id="@+id/view"
@@ -49,7 +50,7 @@
         android:layout_marginStart="8dp"
         android:layout_marginTop="42dp"
         android:background="@android:color/darker_gray"
-        app:layout_constraintBottom_toBottomOf="@+id/textView21"
+        app:layout_constraintBottom_toBottomOf="@+id/OverallScoresTextViewHomePage"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="@+id/complete"
@@ -59,7 +60,7 @@
         tools:layout_constraintTop_creator="1" />
 
         <TextView
-            android:id="@+id/textView21"
+            android:id="@+id/OverallScoresTextViewHomePage"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="26dp"
@@ -78,7 +79,7 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView21"
+            app:layout_constraintTop_toBottomOf="@+id/OverallScoresTextViewHomePage"
             app:layout_constraintVertical_bias="0.003" />
 
         <Button
@@ -91,7 +92,7 @@
             app:layout_constraintHorizontal_bias="0.496"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView21" />
+            app:layout_constraintTop_toBottomOf="@+id/OverallScoresTextViewHomePage" />
 
         <View
             android:id="@+id/view2"
@@ -203,11 +204,11 @@
             app:srcCompat="@drawable/academic_icon"
             tools:layout_constraintBottom_creator="1"
             tools:layout_constraintLeft_creator="1"
-            tools:layout_constraintRight_creator="1"
             android:layout_marginLeft="85dp"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"
-            android:layout_marginBottom="12dp" />
+            android:layout_marginBottom="12dp"
+            android:layout_marginStart="85dp" />
 
         <ImageView
             android:id="@+id/emotional_icon"
@@ -217,11 +218,11 @@
             app:srcCompat="@drawable/heart_icon"
             tools:layout_constraintBottom_creator="1"
             tools:layout_constraintLeft_creator="1"
-            tools:layout_constraintRight_creator="1"
             app:layout_constraintLeft_toRightOf="@+id/academic_icon"
             android:layout_marginLeft="24dp"
             app:layout_constraintBottom_toBottomOf="parent"
-            android:layout_marginBottom="12dp" />
+            android:layout_marginBottom="12dp"
+            android:layout_marginStart="24dp" />
 
         <ImageView
             android:id="@+id/social_icon"
@@ -230,12 +231,11 @@
             android:visibility="visible"
             app:srcCompat="@drawable/social_icon"
             tools:layout_constraintLeft_creator="1"
-            tools:layout_constraintRight_creator="1"
-            tools:layout_constraintTop_creator="1"
             app:layout_constraintLeft_toRightOf="@+id/physical_icon"
             android:layout_marginLeft="27dp"
             app:layout_constraintBottom_toBottomOf="parent"
-            android:layout_marginBottom="12dp" />
+            android:layout_marginBottom="12dp"
+            android:layout_marginStart="27dp" />
 
         <ImageView
             android:id="@+id/physical_icon"
@@ -245,11 +245,11 @@
             app:srcCompat="@drawable/physical_icon"
             tools:layout_constraintBottom_creator="1"
             tools:layout_constraintLeft_creator="1"
-            tools:layout_constraintRight_creator="1"
             app:layout_constraintLeft_toRightOf="@+id/emotional_icon"
             android:layout_marginLeft="24dp"
             app:layout_constraintBottom_toBottomOf="parent"
-            android:layout_marginBottom="12dp" />
+            android:layout_marginBottom="12dp"
+            android:layout_marginStart="24dp" />
     </android.support.constraint.ConstraintLayout>
 
     <include

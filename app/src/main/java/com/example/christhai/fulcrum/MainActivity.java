@@ -56,6 +56,7 @@ public class MainActivity extends BaseActivity {
         super.onResume();
         Button mAssessment = (Button) findViewById(R.id.assessment);
         ImageView mComplete = (ImageView) findViewById(R.id.complete);
+        TextView mOverallScore = (TextView) findViewById(R.id.OverallScoresTextViewHomePage);
         AC = new AssessmentController();
         getParcel();
 
@@ -70,17 +71,23 @@ public class MainActivity extends BaseActivity {
                 new DataPoint(5, 20),
                 new DataPoint(6, 16)
         });
-        overallWellnessGraph.getViewport().setXAxisBoundsManual(true);
+        //overallWellnessGraph.getViewport().setXAxisBoundsManual(true);
         overallWellnessGraph.getViewport().setMinX(-0.5);
         overallWellnessGraph.getViewport().setMaxX(6.5);
-        overallWellnessGraph.getViewport().setYAxisBoundsManual(true);
+        //overallWellnessGraph.getViewport().setYAxisBoundsManual(true);
         overallWellnessGraph.getViewport().setMinY(-1);
         overallWellnessGraph.getViewport().setMaxY(41);
 
+        overallWellnessGraph.getViewport().setXAxisBoundsManual(true);
+        overallWellnessGraph.getViewport().setYAxisBoundsManual(true);
+
+
         StaticLabelsFormatter staticLabelsFormatter1 = new StaticLabelsFormatter(overallWellnessGraph);
-        staticLabelsFormatter1.setHorizontalLabels(new String[] {"","","", "11/22 - 11/28", "", "", ""});
+        staticLabelsFormatter1.setHorizontalLabels(new String[] {"","","", "11/23 - 11/29", "", "", ""});
         staticLabelsFormatter1.setViewport(overallWellnessGraph.getViewport());
         overallWellnessGraph.getGridLabelRenderer().setLabelFormatter(staticLabelsFormatter1);
+        //overallWellnessGraph.getGridLabelRenderer().setNumHorizontalLabels(6);
+        //overallWellnessGraph.getGridLabelRenderer().setGridStyle(GridLabelRenderer.GridStyle.HORIZONTAL);
 
         overallWellnessGraph.addSeries(overallWellnessSeries);
 
@@ -89,10 +96,10 @@ public class MainActivity extends BaseActivity {
         GraphView individualWellnessGraph = (GraphView) findViewById(R.id.individualWellnessGraphHomePage);
         BarGraphSeries<DataPoint> individualWellnessSeries = new BarGraphSeries<>(new DataPoint[] {
                 new DataPoint(0, 0),
-                new DataPoint(1, 5),
-                new DataPoint(2, 3),
-                new DataPoint(3, 2),
-                new DataPoint(4, 6)
+                new DataPoint(1, 9),
+                new DataPoint(2, 2),
+                new DataPoint(3, 3),
+                new DataPoint(4, 1)
         });
         individualWellnessSeries.setSpacing(20);
         individualWellnessGraph.getViewport().setXAxisBoundsManual(true);
@@ -134,13 +141,13 @@ public class MainActivity extends BaseActivity {
         ImageView physicalIcon = (ImageView) findViewById(R.id.physical_icon);
         ImageView socialIcon = (ImageView) findViewById(R.id.social_icon);
 
-        if (DC.checkComplete()) {
+        //if (DC.checkComplete()) {
             mComplete.setVisibility(View.VISIBLE);
             mAssessment.setText("Complete!");
-        } else {
-            mComplete.setVisibility(View.INVISIBLE);
-            mAssessment.setText("Daily Assessment");
-        }
+        //} else {
+            //mComplete.setVisibility(View.INVISIBLE);
+            //mAssessment.setText("Daily Assessment");
+        //}
 
         mAssessment.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -155,6 +162,14 @@ public class MainActivity extends BaseActivity {
         });
 
         overallWellness.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(), OverallWellnessActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        mOverallScore.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(getApplicationContext(), OverallWellnessActivity.class);

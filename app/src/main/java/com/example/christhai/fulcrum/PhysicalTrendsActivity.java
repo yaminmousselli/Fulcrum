@@ -45,7 +45,7 @@ public class PhysicalTrendsActivity extends BaseActivity {
         overallWellnessSeries.setColor(Color.rgb(255, 242, 0));
 
         StaticLabelsFormatter staticLabelsFormatter1 = new StaticLabelsFormatter(overallWellnessGraph);
-        staticLabelsFormatter1.setHorizontalLabels(new String[] {"","","", "11/22 - 11/28", "", "", ""});
+        staticLabelsFormatter1.setHorizontalLabels(new String[] {"","","", "11/23 - 11/29", "", "", ""});
         staticLabelsFormatter1.setViewport(overallWellnessGraph.getViewport());
         overallWellnessGraph.getGridLabelRenderer().setLabelFormatter(staticLabelsFormatter1);
 
