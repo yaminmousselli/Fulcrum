@@ -27,8 +27,7 @@
             app:layout_constraintBottom_toTopOf="@+id/notifications"
             app:layout_constraintLeft_toLeftOf="parent"
             tools:layout_constraintBottom_creator="1"
-            tools:layout_constraintLeft_creator="1"
-            tools:layout_constraintTop_creator="1" />
+            tools:layout_constraintLeft_creator="1" />
 
         <TextView
             android:id="@+id/notifications"

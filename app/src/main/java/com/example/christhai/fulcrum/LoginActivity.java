@@ -22,7 +22,7 @@ import com.google.firebase.auth.FirebaseAuth;
 import java.util.concurrent.ExecutionException;
 
 /** Represents the login page.
- * @author Team Atlas
+ * @author Team All-Star
  * @version 1.0
 */
 public class LoginActivity extends AppCompatActivity {
