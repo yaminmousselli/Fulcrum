@@ -43,11 +43,13 @@ public class MainActivity extends BaseActivity {
     private ExpandableListView submenu;
     private ExpandableListAdapter currAdapter;
     private Menu menu;
+    private Score score = new Score();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        getParcel();
     }
 
     @Override
@@ -58,8 +60,6 @@ public class MainActivity extends BaseActivity {
         ImageView mComplete = (ImageView) findViewById(R.id.complete);
         TextView mOverallScore = (TextView) findViewById(R.id.OverallScoresTextViewHomePage);
         AC = new AssessmentController();
-        getParcel();
-
 
         GraphView overallWellnessGraph = (GraphView) findViewById(R.id.overallWellnessGraphHomePage);
         LineGraphSeries<DataPoint> overallWellnessSeries = new LineGraphSeries<>(new DataPoint[] {
@@ -141,7 +141,8 @@ public class MainActivity extends BaseActivity {
         ImageView physicalIcon = (ImageView) findViewById(R.id.physical_icon);
         ImageView socialIcon = (ImageView) findViewById(R.id.social_icon);
 
-        //if (DC.checkComplete()) {
+        if (score.isComplete()) {
+
             mComplete.setVisibility(View.VISIBLE);
             mAssessment.setText("Complete!");
         //} else {
@@ -152,10 +153,11 @@ public class MainActivity extends BaseActivity {
         mAssessment.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (!DC.checkComplete()) {
+                if (!score.isComplete() && score != null) {
                     Intent intent = new Intent(getApplicationContext(), daily_assessment.class);
-//                    intent.putExtra("AC", AC);
-//                    intent.putExtra("questionNum", mQuestionNum);
+                    intent.putExtra("AC", AC);
+                    intent.putExtra("questionNum", mQuestionNum);
+                    intent.putExtra("score", score);
                     startActivity(intent);
                 }
             }
@@ -251,6 +253,12 @@ public class MainActivity extends BaseActivity {
         if (b.getParcelableExtra("AC") != null) {
             AC = b.getParcelableExtra("AC");
             mQuestionNum = b.getIntExtra("questionNum", 0);
+        }
+
+        if (b.getParcelableExtra("score") != null) {
+            score = b.getParcelableExtra("score");
+        } else {
+            score.loadData();
         }
     }
 

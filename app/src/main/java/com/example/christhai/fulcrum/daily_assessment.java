@@ -1,6 +1,7 @@
 package com.example.christhai.fulcrum;
 
 import android.content.Intent;
+import android.os.AsyncTask;
 import android.os.Parcelable;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -19,6 +20,7 @@ public class daily_assessment extends AppCompatActivity {
 
     private AssessmentController AC = new AssessmentController();
     private DatabaseController DC = new DatabaseController();
+    private Score score = new Score();
 
     private TextView mQuestionView;
     private TextView mQuestionNumView;
@@ -46,10 +48,9 @@ public class daily_assessment extends AppCompatActivity {
     protected void onResume() {
         super.onResume();
         setContentView(R.layout.activity_daily_assessment);
-        DC = new DatabaseController();
-        AC = new AssessmentController();
-        DC.readScore(AC);
         System.out.println("TEST ASYNC");
+
+
         mQuestionView = (TextView) findViewById(R.id.question);
         mQuestionNumView = (TextView) findViewById(R.id.questionNum);
 
@@ -68,8 +69,9 @@ public class daily_assessment extends AppCompatActivity {
         mNext = (Button) findViewById(R.id.next);
         final Button mPrev = (Button) findViewById(R.id.prev);
         Button mSave = (Button) findViewById(R.id.save);
+        getParcel();
+        AC = new AssessmentController(score.getScores());
         checkScores();
-//        getParcel();
         mNext.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -82,15 +84,13 @@ public class daily_assessment extends AppCompatActivity {
                     checkScores();
                 } else if (mQuestionNum == 9) {
                     updateScores();
-//                    if (DC.checkComplete()) {
-//                        Bundle b = new Bundle();
-                        DC.pushScores(AC, true);
-                        Intent intent = new Intent();
-//                        b.putParcelable("AC", AC);
-//                        b.putInt("questionNum", mQuestionNum);
-//                        intent.putExtras(b);
-                        intent.setClass(getApplicationContext(),MainActivity.class);
-                        startActivity(intent);
+                    DC.pushScores(AC, true);
+                    score = new Score(AC.getList(),true);
+                    System.out.println("score is + " + score.getScores());
+                    Intent intent = new Intent();
+                    intent.putExtra("score", score);
+                    intent.setClass(getApplicationContext(),MainActivity.class);
+                    startActivity(intent);
 //                    }
                 }
             }
@@ -106,7 +106,6 @@ public class daily_assessment extends AppCompatActivity {
                     updateScores();
                     mQuestionNum--;
                     updateText();
-                    //mAnswers.clearCheck();
                     setDefaultSeekbarProgress();
                     checkScores();
                 }
@@ -195,7 +194,6 @@ public class daily_assessment extends AppCompatActivity {
      */
     private void checkScores() {
         int choice = AC.getScores(mQuestionNum);
-        //mAnswers.check(choice);
         if (choice != -1) {
             mAnswer.setProgress(choice);
         } else {
@@ -218,8 +216,13 @@ public class daily_assessment extends AppCompatActivity {
         if (b.getParcelableExtra("AC") != null) {
             AC = b.getParcelableExtra("AC");
             mQuestionNum = b.getIntExtra("questionNum", 0);
+        }
+
+        if (b.getParcelableExtra("score") != null) {
+            score = b.getParcelableExtra("score");
             checkScores();
             updateText();
         }
     }
+
 }

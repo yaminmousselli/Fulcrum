@@ -12,7 +12,7 @@ import java.util.List;
  * @version 1.0
 */
 
-public class AssessmentController{
+public class AssessmentController implements Parcelable {
     private String questions [] = {"How well did you cope today?",
             "How did you feel today overall?", "How well do you love yourself today?",
             "How do you feel about your academic performance today?",
@@ -46,9 +46,10 @@ public class AssessmentController{
             this.scores[i] = scores.get(i);
         }
     }
-//    public AssessmentController(Parcel in) {
-//        this.scores = in.createIntArray();
-//    }
+
+    public AssessmentController(Parcel in) {
+        this.scores = in.createIntArray();
+    }
 
     public String getQuestions(int a) {
         String q = questions[a];
@@ -100,27 +101,27 @@ public class AssessmentController{
         }
     }
 
-//    @Override
-//    public int describeContents() {
-//        return 0;
-//    }
-//
-//    @Override
-//    public void writeToParcel(Parcel dest, int flags) {
-//        dest.writeIntArray(scores);
-//    }
-//
-//    public static final Parcelable.Creator<AssessmentController> CREATOR =
-//            new Creator<AssessmentController>() {
-//
-//                @Override
-//                public AssessmentController createFromParcel(Parcel in) {
-//                    return new AssessmentController(in);
-//                }
-//
-//                @Override
-//                public AssessmentController[] newArray(int size) {
-//                    return new AssessmentController[0];
-//                }
-//            };
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeIntArray(scores);
+    }
+
+    public static final Parcelable.Creator<AssessmentController> CREATOR =
+            new Parcelable.Creator<AssessmentController>() {
+
+                @Override
+                public AssessmentController createFromParcel(Parcel in) {
+                    return new AssessmentController(in);
+                }
+
+                @Override
+                public AssessmentController[] newArray(int size) {
+                    return new AssessmentController[0];
+                }
+            };
 }

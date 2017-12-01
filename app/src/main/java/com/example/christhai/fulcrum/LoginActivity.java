@@ -1,6 +1,7 @@
 package com.example.christhai.fulcrum;
 
 import android.content.Intent;
+import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -18,6 +19,8 @@ import com.google.firebase.auth.AuthResult;
 import android.widget.Toast;
 import com.google.firebase.auth.FirebaseAuth;
 
+import java.util.concurrent.ExecutionException;
+
 /** Represents the login page.
  * @author Team All-Star
  * @version 1.0
@@ -32,6 +35,7 @@ public class LoginActivity extends AppCompatActivity {
     private EditText password;
     private EditText email;
     private DatabaseController mDatabaseController = new DatabaseController();
+    private AssessmentController AC = new AssessmentController();
     private boolean validate(String email, String password) {
         boolean valid = true;
         //String email = ((TextView) findViewById(R.id.email)).getText().toString();
