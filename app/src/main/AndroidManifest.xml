@@ -35,12 +35,13 @@
         <activity android:name=".EmotionalTrendsActivity" />
         <activity android:name=".PhysicalTrendsActivity" />
         <activity android:name=".SocialTrendsActivity" />
-        <activity android:name=".TermsAndConditionsActivity"></activity>
+        <activity android:name=".TermsAndConditionsActivity" />
         <activity
             android:name=".nav_bar"
             android:label="@string/title_activity_nav_bar"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".HelpFeedbackActivity"></activity>
+        <activity android:name=".HelpFeedbackActivity" />
+        <activity android:name=".PhyTrackerAuthActivity" />
     </application>
 
 </manifest>

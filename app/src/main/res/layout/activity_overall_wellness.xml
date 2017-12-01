@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:id="@+id/overall_wellness_drawer"
+    android:id="@+id/drawer"
     tools:context="com.example.christhai.fulcrum.OverallWellnessActivity">
 
     <android.support.constraint.ConstraintLayout
@@ -19,28 +19,93 @@
             tools:layout_constraintTop_creator="1"
             tools:layout_constraintRight_creator="1"
             app:layout_constraintRight_toRightOf="parent"
-            android:layout_marginTop="16dp"
+            android:layout_marginTop="79dp"
             tools:layout_constraintLeft_creator="1"
             app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintHorizontal_bias="0.504" />
+
+        <com.jjoe64.graphview.GraphView
+            android:id="@+id/overallWellnessGraph"
+            android:layout_width="350dp"
+            android:layout_height="300dp"
+            android:layout_marginTop="24dp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView15" />
+
+        <ImageView
+            android:id="@+id/academic_icon_Overall"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:visibility="visible"
+            app:srcCompat="@drawable/academic_icon"
+            tools:layout_constraintBottom_creator="1"
+            tools:layout_constraintLeft_creator="1"
+            android:layout_marginLeft="85dp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:layout_marginBottom="197dp"
+            android:layout_marginStart="85dp" />
+
+        <ImageView
+            android:id="@+id/emotional_icon_Overall"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:visibility="visible"
+            app:srcCompat="@drawable/heart_icon"
+            tools:layout_constraintBottom_creator="1"
+            tools:layout_constraintLeft_creator="1"
+            app:layout_constraintLeft_toRightOf="@+id/academic_icon_Overall"
+            android:layout_marginLeft="24dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:layout_marginBottom="197dp"
+            android:layout_marginStart="24dp" />
+
+        <ImageView
+            android:id="@+id/social_icon_Overall"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:visibility="visible"
+            app:srcCompat="@drawable/social_icon"
+            tools:layout_constraintLeft_creator="1"
+            app:layout_constraintLeft_toRightOf="@+id/physical_icon_Overall"
+            android:layout_marginLeft="27dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:layout_marginBottom="197dp"
+            android:layout_marginStart="27dp" />
+
+        <ImageView
+            android:id="@+id/physical_icon_Overall"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:visibility="visible"
+            app:srcCompat="@drawable/physical_icon"
+            tools:layout_constraintBottom_creator="1"
+            tools:layout_constraintLeft_creator="1"
+            app:layout_constraintLeft_toRightOf="@+id/emotional_icon_Overall"
+            android:layout_marginLeft="24dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:layout_marginBottom="197dp"
+            android:layout_marginStart="24dp" />
 
         <DatePicker
-            android:id="@+id/datePicker2"
-            android:datePickerMode="spinner"
-            android:calendarViewShown="false"
+            android:id="@+id/overall_wellness_date_picker"
             android:layout_width="0dp"
             android:layout_height="157dp"
-            tools:layout_constraintRight_creator="1"
-            tools:layout_constraintBottom_creator="1"
-            android:layout_marginStart="68dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            android:layout_marginEnd="68dp"
-            app:layout_constraintRight_toRightOf="parent"
-            tools:layout_constraintLeft_creator="1"
             android:layout_marginBottom="32dp"
-            app:layout_constraintLeft_toLeftOf="parent"
+            android:layout_marginEnd="68dp"
             android:layout_marginLeft="68dp"
-            android:layout_marginRight="68dp" />
+            android:layout_marginRight="68dp"
+            android:layout_marginStart="68dp"
+            android:calendarViewShown="false"
+            android:datePickerMode="spinner"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            tools:layout_constraintBottom_creator="1"
+            tools:layout_constraintLeft_creator="1"
+            tools:layout_constraintRight_creator="1" />
     </android.support.constraint.ConstraintLayout>
     <include
         layout="@layout/app_bar_nav_bar"
@@ -53,7 +118,15 @@
         android:layout_height="match_parent"
         android:layout_gravity="start"
         android:fitsSystemWindows="true"
-        app:headerLayout="@layout/nav_header_nav_bar"
-        app:menu="@menu/activity_nav_bar_drawer" />
+        app:headerLayout="@layout/nav_header_nav_bar">
+        <ExpandableListView
+            android:id="@+id/navigationmenu"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/nav_header_height"
+            android:dividerHeight="0dp"
+            android:groupIndicator="@android:color/transparent"/>
+
+    </android.support.design.widget.NavigationView>
 
 </android.support.v4.widget.DrawerLayout>

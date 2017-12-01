@@ -28,6 +28,7 @@ public class AccountActivity extends AppCompatActivity {
         TextView email = (TextView) findViewById(R.id.email_account_page);
         TextView password = (TextView) findViewById(R.id.password_account_page);
 
+        Button physTracker = (Button) findViewById(R.id.physTrackerButton);
         Button deleteAccount = (Button) findViewById(R.id.delete_account);
 
         Button save = (Button) findViewById(R.id.save_account);
@@ -47,6 +48,15 @@ public class AccountActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(getApplicationContext(), SettingsActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        physTracker.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //Intent intent = new Intent(getApplicationContext(), PhyTrackerAuthActivity.class);
+                Intent intent = new Intent(getApplicationContext(), PhyTrackerAuthActivity.class);
                 startActivity(intent);
             }
         });

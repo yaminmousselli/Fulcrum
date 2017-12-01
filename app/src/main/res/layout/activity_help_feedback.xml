@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:id="@+id/help_drawer"
+    android:id="@+id/drawer"
     tools:context="com.example.christhai.fulcrum.HelpFeedbackActivity">
     <include
         layout="@layout/app_bar_nav_bar"
@@ -17,6 +17,14 @@
         android:layout_height="match_parent"
         android:layout_gravity="start"
         android:fitsSystemWindows="true"
-        app:headerLayout="@layout/nav_header_nav_bar"
-        app:menu="@menu/activity_nav_bar_drawer" />
+        app:headerLayout="@layout/nav_header_nav_bar">
+        <ExpandableListView
+            android:id="@+id/navigationmenu"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/nav_header_height"
+            android:dividerHeight="0dp"
+            android:groupIndicator="@android:color/transparent"/>
+
+    </android.support.design.widget.NavigationView>
 </android.support.v4.widget.DrawerLayout>

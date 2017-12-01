@@ -3,12 +3,16 @@ package com.example.christhai.fulcrum;
 import android.os.Parcel;
 import android.os.Parcelable;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
 /** Represents the back end for the daily assessment page.
  * @author Team All-Star
  * @version 1.0
 */
 
-public class AssessmentController implements Parcelable {
+public class AssessmentController{
     private String questions [] = {"How well did you cope today?",
             "How did you feel today overall?", "How well do you love yourself today?",
             "How do you feel about your academic performance today?",
@@ -31,16 +35,20 @@ public class AssessmentController implements Parcelable {
             {"Distant", "Unconnected", "Ehh...", "Connected", "Very Connected"}
     };
 
-    private int scores[] = {-1, -1, -1, -1, -1, -1, -1, -1, -1 , -1};
-
+    private int scores[] = {2, 2, 2, 2, 2, 2, 2, 2, 2 , 2};
     public AssessmentController() {
         for (int i = 0; i < 9; i++) {
-            scores[i] = -1;
+            scores[i] = 2;
         }
     }
-    public AssessmentController(Parcel in) {
-        this.scores = in.createIntArray();
+    public AssessmentController(List<Integer> scores) {
+        for(int i = 0; i < 10; i++) {
+            this.scores[i] = scores.get(i);
+        }
     }
+//    public AssessmentController(Parcel in) {
+//        this.scores = in.createIntArray();
+//    }
 
     public String getQuestions(int a) {
         String q = questions[a];
@@ -81,38 +89,38 @@ public class AssessmentController implements Parcelable {
         scores[a] = b;
     }
 
-    public boolean checkComplete() {
-        int complete = 1;
-        for (int i = 0; i < 10; i++) {
-            int choice = scores[i];
-            if (choice < 0) {
-                complete = -1;
-            }
+
+    public int[] getList() {
+        return scores;
+    }
+
+    public void setList(List<Integer> scores) {
+        for(int i = 0; i < 10; i++) {
+            this.scores[i] = scores.get(i);
         }
-        return (complete > 0);
     }
 
-    @Override
-    public int describeContents() {
-        return 0;
-    }
-
-    @Override
-    public void writeToParcel(Parcel dest, int flags) {
-        dest.writeIntArray(scores);
-    }
-
-    public static final Parcelable.Creator<AssessmentController> CREATOR =
-            new Creator<AssessmentController>() {
-
-                @Override
-                public AssessmentController createFromParcel(Parcel in) {
-                    return new AssessmentController(in);
-                }
-
-                @Override
-                public AssessmentController[] newArray(int size) {
-                    return new AssessmentController[0];
-                }
-            };
+//    @Override
+//    public int describeContents() {
+//        return 0;
+//    }
+//
+//    @Override
+//    public void writeToParcel(Parcel dest, int flags) {
+//        dest.writeIntArray(scores);
+//    }
+//
+//    public static final Parcelable.Creator<AssessmentController> CREATOR =
+//            new Creator<AssessmentController>() {
+//
+//                @Override
+//                public AssessmentController createFromParcel(Parcel in) {
+//                    return new AssessmentController(in);
+//                }
+//
+//                @Override
+//                public AssessmentController[] newArray(int size) {
+//                    return new AssessmentController[0];
+//                }
+//            };
 }

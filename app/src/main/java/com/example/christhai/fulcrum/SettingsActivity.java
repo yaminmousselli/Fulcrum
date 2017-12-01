@@ -19,13 +19,16 @@ import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
+import com.jjoe64.graphview.*;
+import com.jjoe64.graphview.series.LineGraphSeries;
+import com.jjoe64.graphview.series.DataPoint;
 
 /** Represents the settings page.
  * @author Team All-Star
  * @version 1.0
 */
 
-public class SettingsActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
+public class SettingsActivity extends BaseActivity {
 
     private NavigationView navigationView;
     @Override
@@ -36,20 +39,9 @@ public class SettingsActivity extends AppCompatActivity implements NavigationVie
 
     @Override
     protected void onResume() {
-        super.onResume();
         setContentView(R.layout.activity_settings);
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
-        toolbar.setTitle("Settings");
-
-        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.settings_drawer);
-        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
-                this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
-        drawer.setDrawerListener(toggle);
-        toggle.syncState();
-
-        navigationView = (NavigationView) findViewById(R.id.nav_view);
-        navigationView.setNavigationItemSelectedListener(this);
+        super.onResume();
+        super.getToolbar().setTitle("Settings");
 
         TextView account = (TextView) findViewById(R.id.account_settings);
         TextView notifications = (TextView) findViewById(R.id.notifications);
@@ -80,59 +72,5 @@ public class SettingsActivity extends AppCompatActivity implements NavigationVie
         });
     }
 
-    //Below are methods for the Toolbar.
-    @Override
-    public void onBackPressed() {
-        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
-        if (drawer.isDrawerOpen(GravityCompat.START)) {
-            drawer.closeDrawer(GravityCompat.START);
-        } else {
-            super.onBackPressed();
-        }
-    }
-
-
-    @Override
-    public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
-
-        switch (id) {
-            case R.id.nav_home:
-                Intent intent = new Intent(getApplicationContext(), MainActivity.class);
-                startActivity(intent);
-                return true;
-            case R.id.nav_daily_assessment:
-                intent = new Intent(getApplicationContext(), MainActivity.class);
-                startActivity(intent);
-                return true;
-            case R.id.nav_overall_wellness:
-                intent = new Intent(getApplicationContext(), OverallWellnessActivity.class);
-                startActivity(intent);
-                return true;
-            case R.id.nav_settings:
-                intent = new Intent(getApplicationContext(), SettingsActivity.class);
-                startActivity(intent);
-                return true;
-            case R.id.nav_help_feedback:
-                intent = new Intent(getApplicationContext(), HelpFeedbackActivity.class);
-                startActivity(intent);
-                return true;
-            case R.id.nav_current_trends:
-                intent = new Intent(getApplicationContext(), MainActivity.class);
-                startActivity(intent);
-                return true;
-            case R.id.nav_sign_out:
-                intent = new Intent(getApplicationContext(), LoginActivity.class);
-                startActivity(intent);
-                return true;
-            default:
-                DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
-                drawer.closeDrawer(GravityCompat.START);
-                return true;
-        }
-    }
 }
 
