@@ -116,6 +116,7 @@ public class Score implements Parcelable{
     }
 
     public void loadData() {
+        System.out.println("Start");
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
         String email = user.getEmail();
         email = encodeEmail(email);
@@ -139,6 +140,9 @@ public class Score implements Parcelable{
                     }
                     Score.this.scores = list;
                 }
+                System.out.println("END");
+
+                System.out.println(Score.this.scores);
             }
             @Override
             public void onCancelled(DatabaseError databaseError) {

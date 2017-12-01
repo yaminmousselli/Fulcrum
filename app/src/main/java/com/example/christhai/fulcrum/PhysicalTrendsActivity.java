@@ -1,5 +1,6 @@
 package com.example.christhai.fulcrum;
 
+import android.content.Intent;
 import android.graphics.Color;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -15,6 +16,7 @@ import com.jjoe64.graphview.series.LineGraphSeries;
 */
 public class PhysicalTrendsActivity extends BaseActivity {
 
+    private Score score = new Score();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -50,5 +52,13 @@ public class PhysicalTrendsActivity extends BaseActivity {
         overallWellnessGraph.getGridLabelRenderer().setLabelFormatter(staticLabelsFormatter1);
 
         overallWellnessGraph.addSeries(overallWellnessSeries);
+    }
+    private void getParcel() {
+        Intent b = getIntent();
+
+        if (b.getParcelableExtra("score") != null) {
+            score = b.getParcelableExtra("score");
+
+        }
     }
 }
