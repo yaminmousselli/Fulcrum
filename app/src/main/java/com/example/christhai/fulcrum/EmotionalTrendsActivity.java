@@ -10,7 +10,7 @@ import com.jjoe64.graphview.series.DataPoint;
 import com.jjoe64.graphview.series.LineGraphSeries;
 
 /** Represents the emotional trends page.
- * @author Team Atlas
+ * @author Team All-Star
  * @version 1.0
 */
 

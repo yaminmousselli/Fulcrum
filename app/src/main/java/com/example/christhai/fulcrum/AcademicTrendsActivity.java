@@ -10,7 +10,7 @@ import com.jjoe64.graphview.series.LineGraphSeries;
 import android.graphics.Color;
 
 /** Represents the academic trends page.
- * @author Team Atlas
+ * @author Team All-Star
  * @version 1.0
 */
 public class AcademicTrendsActivity extends BaseActivity {

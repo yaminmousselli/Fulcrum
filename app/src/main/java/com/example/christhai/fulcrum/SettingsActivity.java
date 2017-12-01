@@ -24,7 +24,7 @@ import com.jjoe64.graphview.series.LineGraphSeries;
 import com.jjoe64.graphview.series.DataPoint;
 
 /** Represents the settings page.
- * @author Team Atlas
+ * @author Team All-Star
  * @version 1.0
 */
 

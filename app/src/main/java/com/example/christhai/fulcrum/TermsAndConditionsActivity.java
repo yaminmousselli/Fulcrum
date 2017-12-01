@@ -6,6 +6,11 @@ import android.os.Bundle;
 import android.text.Html;
 import android.widget.TextView;
 
+/** Represents the terms and conditions page.
+ * @author Team All-Star
+ * @version 1.0
+ */
+
 public class TermsAndConditionsActivity extends AppCompatActivity {
 
     @Override

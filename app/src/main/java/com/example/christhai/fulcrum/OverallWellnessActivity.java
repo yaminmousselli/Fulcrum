@@ -23,7 +23,7 @@ import com.jjoe64.graphview.series.LineGraphSeries;
 import java.util.Calendar;
 
 /** Represents the overall wellness trends page.
- * @author Team Atlas
+ * @author Team All-Star
  * @version 1.0
 */
 

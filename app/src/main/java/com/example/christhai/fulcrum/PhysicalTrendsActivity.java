@@ -10,7 +10,7 @@ import com.jjoe64.graphview.series.DataPoint;
 import com.jjoe64.graphview.series.LineGraphSeries;
 
 /** Represents the physical trends page.
- * @author Team Atlas
+ * @author Team All-Star
  * @version 1.0
 */
 public class PhysicalTrendsActivity extends BaseActivity {

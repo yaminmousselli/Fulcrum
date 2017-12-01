@@ -8,7 +8,7 @@ import android.widget.Button;
 import android.widget.TextView;
 
 /** Represents the account settings page and stores account information.
- * @author Team Atlas
+ * @author Team All-Star
  * @version 1.0
 */
 public class AccountActivity extends AppCompatActivity {
