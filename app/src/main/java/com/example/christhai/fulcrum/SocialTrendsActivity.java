@@ -15,6 +15,7 @@ import com.jjoe64.graphview.series.LineGraphSeries;
 */
 public class SocialTrendsActivity extends BaseActivity {
 
+    private Score score = new Score();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

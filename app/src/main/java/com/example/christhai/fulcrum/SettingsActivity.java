@@ -30,6 +30,7 @@ import com.jjoe64.graphview.series.DataPoint;
 
 public class SettingsActivity extends BaseActivity {
 
+    private Score score = new Score();
     private NavigationView navigationView;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -70,6 +71,15 @@ public class SettingsActivity extends BaseActivity {
                 startActivity(intent);
             }
         });
+    }
+
+    private void getParcel() {
+        Intent b = getIntent();
+
+        if (b.getParcelableExtra("score") != null) {
+            score = b.getParcelableExtra("score");
+
+        }
     }
 
 }
