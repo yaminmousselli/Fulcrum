@@ -29,7 +29,7 @@ public class RegisterActivity extends AppCompatActivity {
     private FirebaseAuth mAuth;
     private FirebaseAuth.AuthStateListener mAuthListener;
     private static final String TAG = "MyActivity";
-
+    private DatabaseController mDatabaseController = new DatabaseController();
     private void createAccount(String email, String password) {
         mAuth.createUserWithEmailAndPassword(email, password)
                 .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
@@ -85,8 +85,8 @@ public class RegisterActivity extends AppCompatActivity {
 
         DatePicker birthday = (DatePicker) findViewById(R.id.birthday);
         Spinner sexList = (Spinner) findViewById(R.id.sex);
-        EditText height = (EditText) findViewById(R.id.height);
-        EditText weight = (EditText) findViewById(R.id.weight);
+        final EditText height = (EditText) findViewById(R.id.height);
+        final EditText weight = (EditText) findViewById(R.id.weight);
 
         Spinner securityQuestionList = (Spinner) findViewById(R.id.security_question);
         final EditText securityQuestionAnswer = (EditText) findViewById(R.id.security_question_answer);
@@ -131,10 +131,13 @@ public class RegisterActivity extends AppCompatActivity {
                     User newUser = new User(firstName.getText().toString(),
                             lastName.getText().toString(),
                             email.getText().toString(),
-                            password.getText().toString(),
+                            height.getText().toString(),
+                            weight.getText().toString(),
                             0, // Will change later
                             securityQuestionAnswer.getText().toString());
+                    mDatabaseController.pushUser(newUser);
                     createAccount(email.getText().toString(), password.getText().toString());
+
                     //myRef.push();
 
                 }

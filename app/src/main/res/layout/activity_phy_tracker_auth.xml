@@ -8,33 +8,39 @@
 
     <Button
         android:id="@+id/getStepsButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="116dp"
+        android:layout_height="67dp"
+        android:layout_marginTop="120dp"
         android:text="Steps"
+        android:textAllCaps="false"
+        android:textSize="24sp"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        android:layout_marginTop="120dp" />
+        tools:layout_editor_absoluteY="101dp" />
 
     <Button
         android:id="@+id/getCaloriesButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="178dp"
+        android:layout_height="88dp"
         android:layout_marginTop="50dp"
         android:text="Calories Burned"
-        app:layout_constraintHorizontal_bias="0.501"
+        android:textAllCaps="false"
+        android:textSize="24sp"
+        app:layout_constraintHorizontal_bias="0.502"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/numSteps" />
+        app:layout_constraintTop_toBottomOf="@+id/numSteps"
+        tools:layout_editor_absoluteY="303dp" />
 
     <TextView
         android:id="@+id/numSteps"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="50dp"
-        android:text="Unknown"
-        android:textSize="18sp"
-        app:layout_constraintHorizontal_bias="0.501"
+        android:layout_marginTop="40dp"
+        android:text="Steps: N/A"
+        android:textSize="24sp"
+        app:layout_constraintHorizontal_bias="0.503"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/getStepsButton" />
@@ -43,10 +49,10 @@
         android:id="@+id/numCalories"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="50dp"
-        android:text="Unknown"
-        android:textSize="18sp"
-        app:layout_constraintHorizontal_bias="0.501"
+        android:layout_marginTop="40dp"
+        android:text="Calories: N/A"
+        android:textSize="24sp"
+        app:layout_constraintHorizontal_bias="0.503"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/getCaloriesButton" />
@@ -55,10 +61,11 @@
         android:id="@+id/textView31"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="69dp"
-        android:text="Score"
-        android:textSize="18sp"
-        app:layout_constraintHorizontal_bias="0.403"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="49dp"
+        android:text="Score:"
+        android:textSize="36sp"
+        app:layout_constraintHorizontal_bias="0.373"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/numCalories" />
@@ -67,10 +74,21 @@
         android:id="@+id/calculatedScore"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="21dp"
-        android:layout_marginTop="69dp"
-        android:text="Unknown"
-        android:textSize="18sp"
+        android:layout_marginLeft="11dp"
+        android:layout_marginTop="50dp"
+        android:text="N/A"
+        android:textSize="36sp"
         app:layout_constraintLeft_toRightOf="@+id/textView31"
         app:layout_constraintTop_toBottomOf="@+id/numCalories" />
+
+    <TextView
+        android:id="@+id/textView25"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Physical Tracker Stats"
+        android:textSize="30sp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginTop="39dp" />
 </android.support.constraint.ConstraintLayout>
