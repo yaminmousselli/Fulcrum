@@ -3,8 +3,12 @@ package com.example.christhai.fulcrum;
 import android.os.Parcel;
 import android.os.Parcelable;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
 /** Represents the back end for the daily assessment page.
- * @author Team Atlas
+ * @author Team All-Star
  * @version 1.0
 */
 
@@ -31,13 +35,18 @@ public class AssessmentController implements Parcelable {
             {"Distant", "Unconnected", "Ehh...", "Connected", "Very Connected"}
     };
 
-    private int scores[] = {-1, -1, -1, -1, -1, -1, -1, -1, -1 , -1};
-
+    private int scores[] = {2, 2, 2, 2, 2, 2, 2, 2, 2 , 2};
     public AssessmentController() {
         for (int i = 0; i < 9; i++) {
-            scores[i] = -1;
+            scores[i] = 2;
         }
     }
+    public AssessmentController(List<Integer> scores) {
+        for(int i = 0; i < 10; i++) {
+            this.scores[i] = scores.get(i);
+        }
+    }
+
     public AssessmentController(Parcel in) {
         this.scores = in.createIntArray();
     }
@@ -81,15 +90,15 @@ public class AssessmentController implements Parcelable {
         scores[a] = b;
     }
 
-    public boolean checkComplete() {
-        int complete = 1;
-        for (int i = 0; i < 10; i++) {
-            int choice = scores[i];
-            if (choice < 0) {
-                complete = -1;
-            }
+
+    public int[] getList() {
+        return scores;
+    }
+
+    public void setList(List<Integer> scores) {
+        for(int i = 0; i < 10; i++) {
+            this.scores[i] = scores.get(i);
         }
-        return (complete > 0);
     }
 
     @Override
@@ -103,7 +112,7 @@ public class AssessmentController implements Parcelable {
     }
 
     public static final Parcelable.Creator<AssessmentController> CREATOR =
-            new Creator<AssessmentController>() {
+            new Parcelable.Creator<AssessmentController>() {
 
                 @Override
                 public AssessmentController createFromParcel(Parcel in) {

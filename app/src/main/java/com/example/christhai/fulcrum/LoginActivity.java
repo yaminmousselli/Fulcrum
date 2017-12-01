@@ -1,6 +1,7 @@
 package com.example.christhai.fulcrum;
 
 import android.content.Intent;
+import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -18,8 +19,10 @@ import com.google.firebase.auth.AuthResult;
 import android.widget.Toast;
 import com.google.firebase.auth.FirebaseAuth;
 
+import java.util.concurrent.ExecutionException;
+
 /** Represents the login page.
- * @author Team Atlas
+ * @author Team All-Star
  * @version 1.0
 */
 public class LoginActivity extends AppCompatActivity {
@@ -31,7 +34,8 @@ public class LoginActivity extends AppCompatActivity {
     private static final String TAG = "MyActivity";
     private EditText password;
     private EditText email;
-
+    private DatabaseController mDatabaseController = new DatabaseController();
+    private AssessmentController AC = new AssessmentController();
     private boolean validate(String email, String password) {
         boolean valid = true;
         //String email = ((TextView) findViewById(R.id.email)).getText().toString();
@@ -63,7 +67,6 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     public void signIn(String email, String password) {
-        if (validate(email, password)) {
             mAuth.signInWithEmailAndPassword(email, password)
                     .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
                         @Override
@@ -78,14 +81,13 @@ public class LoginActivity extends AppCompatActivity {
                             // signed in user can be handled in the listener.
                             if (!task.isSuccessful()) {
                                 Log.w(TAG, "signInWithEmail:failed", task.getException());
-                                Toast.makeText(LoginActivity.this, "Authentication Failed",
+                                Toast.makeText(LoginActivity.this, "Authentication Failed nibbas",
                                         Toast.LENGTH_SHORT).show();
                             }
 
                             // ...
                         }
                     });
-        }
     }
 
     @Override
@@ -128,6 +130,7 @@ public class LoginActivity extends AppCompatActivity {
         login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                mAuth = FirebaseAuth.getInstance();
                 signIn(email.getText().toString().trim(), password.getText().toString().trim());
 
             }
@@ -137,8 +140,10 @@ public class LoginActivity extends AppCompatActivity {
         forgotPassword.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(), MainActivity.class);
-                startActivity(intent);
+                mAuth = FirebaseAuth.getInstance();
+                signIn("test@gmail.com", "password");
+//                Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+//                startActivity(intent);
             }
         });
     }

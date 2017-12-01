@@ -15,25 +15,6 @@
         <item
             android:id="@+id/nav_current_trends"
             android:title="Current Trends">
-            <menu
-                android:id="@+id/nav_trends_menu">
-                <item
-                    android:id="@+id/nav_emotional"
-                    android:title="Emotional Trends"
-                    android:visible="false"/>
-                <item
-                    android:id="@+id/nav_social"
-                    android:title="Social Trends"
-                    android:visible="false"/>
-                <item
-                    android:id="@+id/nav_physical"
-                    android:title="Physical Trends"
-                    android:visible="false"/>
-                <item
-                    android:id="@+id/nav_academic"
-                    android:title="Academic Trends"
-                    android:visible="false"/>
-            </menu>
         </item>
 
         <item
