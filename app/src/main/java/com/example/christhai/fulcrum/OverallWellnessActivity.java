@@ -119,7 +119,7 @@ public class OverallWellnessActivity extends BaseActivity {
             }
         });
 
-        individualWellnessGraph.addSeries(individualWellnessSeries);
+        //individualWellnessGraph.addSeries(individualWellnessSeries);
 
 
         final BarGraphSeries<DataPoint> individualWellnessSeries2 = new BarGraphSeries<>(new DataPoint[]{
@@ -205,11 +205,11 @@ public class OverallWellnessActivity extends BaseActivity {
             }
         });
 
-        //individualWellnessGraph.removeAllSeries();
+        individualWellnessGraph.removeAllSeries();
         //individualWellnessGraph.addSeries(individualWellnessSeries2);
 
 
-        datePicker.init(calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH), calendar.get(Calendar.DAY_OF_MONTH), new DatePicker.OnDateChangedListener() {
+        datePicker.init(calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH) -1, calendar.get(Calendar.DAY_OF_MONTH), new DatePicker.OnDateChangedListener() {
 
             @Override
             public void onDateChanged(DatePicker datePicker, int year, int month, int dayOfMonth) {
@@ -302,6 +302,9 @@ public class OverallWellnessActivity extends BaseActivity {
             }
         });
 
+        //datePicker.updateDate(2017, 11, 1);
+        datePicker.updateDate(calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH), calendar.get(Calendar.DAY_OF_MONTH));
+        //datePicker.updateDate(year, month -1, day);
     }
 
     private void getParcel() {
@@ -312,4 +315,16 @@ public class OverallWellnessActivity extends BaseActivity {
 
         }
     }
+
+    @Override
+    public void onBackPressed()
+    {
+        super.onBackPressed();
+        Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+        intent.putExtra("score", score);
+        startActivity(intent);
+        finish();
+
+    }
+
 }
