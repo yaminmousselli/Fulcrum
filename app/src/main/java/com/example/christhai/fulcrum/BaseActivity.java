@@ -26,7 +26,7 @@ public class BaseActivity extends AppCompatActivity implements NavigationView.On
     private ExpandableListAdapter currAdapter;
     private Menu menu;
     private Toolbar toolbar;
-
+    private Score score = new Score();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -38,6 +38,9 @@ public class BaseActivity extends AppCompatActivity implements NavigationView.On
         toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         toolbar.setTitle("");
+        if (!getIntent().hasExtra("score")) {
+            getParcel();
+        }
 
         //Navigation Drawer Listener
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer);
@@ -62,7 +65,9 @@ public class BaseActivity extends AppCompatActivity implements NavigationView.On
                 TrendsListAdapter adapter = (TrendsListAdapter) currAdapter;
                 Class newpage = adapter.selectPage(groupPosition);
                 if (newpage != null) {
-                    Intent intent = new Intent(getApplicationContext(), newpage);
+                    Intent intent = new Intent();
+                    intent.putExtra("score", score);
+                    intent.setClass(getApplicationContext(),newpage);
                     startActivity(intent);
                     return true;
                 } else {
@@ -97,7 +102,7 @@ public class BaseActivity extends AppCompatActivity implements NavigationView.On
     @Override
     public void onBackPressed () {
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
-        if (drawer.isDrawerOpen(GravityCompat.START)) {
+        if (drawer != null && drawer.isDrawerOpen(GravityCompat.START)) {
             drawer.closeDrawer(GravityCompat.START);
         } else {
             super.onBackPressed();
@@ -116,5 +121,14 @@ public class BaseActivity extends AppCompatActivity implements NavigationView.On
 
     public Toolbar getToolbar() {
         return toolbar;
+    }
+
+    private void getParcel() {
+        Intent b = getIntent();
+
+        if (b.getParcelableExtra("score") != null) {
+            score = b.getParcelableExtra("score");
+
+        }
     }
 }

@@ -66,7 +66,6 @@ public class Score implements Parcelable{
         }
         Date currentDate = Calendar.getInstance().getTime();
         String date = sdf.format(currentDate);
-        System.out.println("DATE IS" + date);
         Integer academicScore = calcAcademic(scores);
         Integer emotionalScore = calcEmotional(scores);
         Integer physicalScore = calcPhysical(scores);
@@ -139,6 +138,8 @@ public class Score implements Parcelable{
                     }
                     Score.this.scores = list;
                 }
+
+                System.out.println(Score.this.scores);
             }
             @Override
             public void onCancelled(DatabaseError databaseError) {
@@ -187,7 +188,7 @@ public class Score implements Parcelable{
             sum += score.get(i);
         }
         double normal =(sum/8);
-        sum = (int) (normal*10);;
+        sum = (int) (normal*10);
         int result = (int) sum;
         return result;
     }

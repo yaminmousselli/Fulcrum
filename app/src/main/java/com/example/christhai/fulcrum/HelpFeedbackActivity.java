@@ -19,7 +19,7 @@ import android.view.MenuItem;
 
 public class HelpFeedbackActivity extends BaseActivity {
 
-
+    private Score score = new Score();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -33,5 +33,12 @@ public class HelpFeedbackActivity extends BaseActivity {
         super.getToolbar().setTitle("Help & Feedback");
     }
 
+    private void getParcel() {
+        Intent b = getIntent();
 
+        if (b.getParcelableExtra("score") != null) {
+            score = b.getParcelableExtra("score");
+
+        }
+    }
 }

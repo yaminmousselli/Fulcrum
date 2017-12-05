@@ -15,6 +15,7 @@ import com.jjoe64.graphview.series.LineGraphSeries;
 */
 public class SocialTrendsActivity extends BaseActivity {
 
+    private Score score = new Score();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -45,7 +46,8 @@ public class SocialTrendsActivity extends BaseActivity {
         overallWellnessSeries.setColor(Color.rgb(135, 206, 235));
 
         StaticLabelsFormatter staticLabelsFormatter1 = new StaticLabelsFormatter(overallWellnessGraph);
-        staticLabelsFormatter1.setHorizontalLabels(new String[] {"","","", "11/23 - 11/29", "", "", ""});
+        //Have 8 strings below for seven data points to center the text
+        staticLabelsFormatter1.setHorizontalLabels(new String[]{"", "", "", "Scores over last 7 days", "", "", "", ""});
         staticLabelsFormatter1.setViewport(overallWellnessGraph.getViewport());
         overallWellnessGraph.getGridLabelRenderer().setLabelFormatter(staticLabelsFormatter1);
 

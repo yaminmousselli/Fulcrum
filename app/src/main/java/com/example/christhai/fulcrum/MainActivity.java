@@ -60,75 +60,79 @@ public class MainActivity extends BaseActivity {
         ImageView mComplete = (ImageView) findViewById(R.id.complete);
         TextView mOverallScore = (TextView) findViewById(R.id.OverallScoresTextViewHomePage);
         AC = new AssessmentController();
+        if (score.isComplete()) {
+            GraphView overallWellnessGraph = (GraphView) findViewById(R.id.overallWellnessGraphHomePage);
+            LineGraphSeries<DataPoint> overallWellnessSeries = new LineGraphSeries<>(new DataPoint[]{
+                    new DataPoint(0, 20),
+                    new DataPoint(1, 15),
+                    new DataPoint(2, 33),
+                    new DataPoint(3, 37),
+                    new DataPoint(4, 27),
+                    new DataPoint(5, 20),
+                    new DataPoint(6, 16)
+            });
+            //overallWellnessGraph.getViewport().setXAxisBoundsManual(true);
+            overallWellnessGraph.getViewport().setMinX(-0.5);
+            overallWellnessGraph.getViewport().setMaxX(6.5);
+            //overallWellnessGraph.getViewport().setYAxisBoundsManual(true);
+            overallWellnessGraph.getViewport().setMinY(-1);
+            overallWellnessGraph.getViewport().setMaxY(41);
 
-        GraphView overallWellnessGraph = (GraphView) findViewById(R.id.overallWellnessGraphHomePage);
-        LineGraphSeries<DataPoint> overallWellnessSeries = new LineGraphSeries<>(new DataPoint[] {
-                new DataPoint(0, 20),
-                new DataPoint(1, 15),
-                new DataPoint(2, 33),
-                new DataPoint(3, 37),
-                new DataPoint(4, 27),
-                new DataPoint(5, 20),
-                new DataPoint(6, 16)
-        });
-        //overallWellnessGraph.getViewport().setXAxisBoundsManual(true);
-        overallWellnessGraph.getViewport().setMinX(-0.5);
-        overallWellnessGraph.getViewport().setMaxX(6.5);
-        //overallWellnessGraph.getViewport().setYAxisBoundsManual(true);
-        overallWellnessGraph.getViewport().setMinY(-1);
-        overallWellnessGraph.getViewport().setMaxY(41);
-
-        overallWellnessGraph.getViewport().setXAxisBoundsManual(true);
-        overallWellnessGraph.getViewport().setYAxisBoundsManual(true);
-
-
-        StaticLabelsFormatter staticLabelsFormatter1 = new StaticLabelsFormatter(overallWellnessGraph);
-        staticLabelsFormatter1.setHorizontalLabels(new String[] {"","","", "11/23 - 11/29", "", "", ""});
-        staticLabelsFormatter1.setViewport(overallWellnessGraph.getViewport());
-        overallWellnessGraph.getGridLabelRenderer().setLabelFormatter(staticLabelsFormatter1);
-        //overallWellnessGraph.getGridLabelRenderer().setNumHorizontalLabels(6);
-        //overallWellnessGraph.getGridLabelRenderer().setGridStyle(GridLabelRenderer.GridStyle.HORIZONTAL);
-
-        overallWellnessGraph.addSeries(overallWellnessSeries);
+            overallWellnessGraph.getViewport().setXAxisBoundsManual(true);
+            overallWellnessGraph.getViewport().setYAxisBoundsManual(true);
 
 
+            StaticLabelsFormatter staticLabelsFormatter1 = new StaticLabelsFormatter(overallWellnessGraph);
+            //Have 8 strings below for seven data points to center the text
+            staticLabelsFormatter1.setHorizontalLabels(new String[]{"", "", "", "Scores over last 7 days", "", "", "", ""});
+            staticLabelsFormatter1.setViewport(overallWellnessGraph.getViewport());
+            overallWellnessGraph.getGridLabelRenderer().setLabelFormatter(staticLabelsFormatter1);
+            //overallWellnessGraph.getGridLabelRenderer().setNumHorizontalLabels(6);
+            //overallWellnessGraph.getGridLabelRenderer().setGridStyle(GridLabelRenderer.GridStyle.HORIZONTAL);
 
-        GraphView individualWellnessGraph = (GraphView) findViewById(R.id.individualWellnessGraphHomePage);
-        BarGraphSeries<DataPoint> individualWellnessSeries = new BarGraphSeries<>(new DataPoint[] {
-                new DataPoint(0, 0),
-                new DataPoint(1, 9),
-                new DataPoint(2, 2),
-                new DataPoint(3, 3),
-                new DataPoint(4, 1)
-        });
-        individualWellnessSeries.setSpacing(20);
-        individualWellnessGraph.getViewport().setXAxisBoundsManual(true);
-        individualWellnessGraph.getViewport().setMinX(0.5);
-        individualWellnessGraph.getViewport().setMaxX(4.5);
-        individualWellnessGraph.getViewport().setYAxisBoundsManual(true);
-        individualWellnessGraph.getViewport().setMinY(-0.5);
-        individualWellnessGraph.getViewport().setMaxY(10.5);
-        StaticLabelsFormatter staticLabelsFormatter2 = new StaticLabelsFormatter(individualWellnessGraph);
-        staticLabelsFormatter2.setHorizontalLabels(new String[] {"A","E","P", "S", "blah"});
-        staticLabelsFormatter2.setViewport(individualWellnessGraph.getViewport());
-        individualWellnessGraph.getGridLabelRenderer().setLabelFormatter(staticLabelsFormatter2);
+            overallWellnessGraph.addSeries(overallWellnessSeries);
 
-        individualWellnessSeries.setValueDependentColor(new ValueDependentColor<DataPoint>() {
-            @Override
-            public int get(DataPoint data) {
-                switch ((int)data.getX()) {
-                    case 1:  return Color.rgb(115, 255, 0);
-                    case 2:  return Color.rgb(204, 0, 0);
-                    case 3:  return Color.rgb(255, 242, 0);
-                    case 4:  return Color.rgb(135, 206, 235);
 
+            GraphView individualWellnessGraph = (GraphView) findViewById(R.id.individualWellnessGraphHomePage);
+            BarGraphSeries<DataPoint> individualWellnessSeries = new BarGraphSeries<>(new DataPoint[]{
+                    new DataPoint(0, 0),
+                    new DataPoint(1, score.getScoreMap().get("academicScore")),
+                    new DataPoint(2, score.getScoreMap().get("emotionalScore")),
+                    new DataPoint(3, score.getScoreMap().get("physicalScore")),
+                    new DataPoint(4, score.getScoreMap().get("socialScore"))
+            });
+            individualWellnessSeries.setSpacing(20);
+            individualWellnessGraph.getViewport().setXAxisBoundsManual(true);
+            individualWellnessGraph.getViewport().setMinX(0.5);
+            individualWellnessGraph.getViewport().setMaxX(4.5);
+            individualWellnessGraph.getViewport().setYAxisBoundsManual(true);
+            individualWellnessGraph.getViewport().setMinY(-0.5);
+            individualWellnessGraph.getViewport().setMaxY(10.5);
+            StaticLabelsFormatter staticLabelsFormatter2 = new StaticLabelsFormatter(individualWellnessGraph);
+            staticLabelsFormatter2.setHorizontalLabels(new String[]{"A", "E", "P", "S", "blah"});
+            staticLabelsFormatter2.setViewport(individualWellnessGraph.getViewport());
+            individualWellnessGraph.getGridLabelRenderer().setLabelFormatter(staticLabelsFormatter2);
+
+            individualWellnessSeries.setValueDependentColor(new ValueDependentColor<DataPoint>() {
+                @Override
+                public int get(DataPoint data) {
+                    switch ((int) data.getX()) {
+                        case 1:
+                            return Color.rgb(115, 255, 0);
+                        case 2:
+                            return Color.rgb(204, 0, 0);
+                        case 3:
+                            return Color.rgb(255, 242, 0);
+                        case 4:
+                            return Color.rgb(135, 206, 235);
+
+                    }
+                    return 99;
                 }
-                return 99;
-            }
-        });
+            });
 
-        individualWellnessGraph.addSeries(individualWellnessSeries);
-
+            individualWellnessGraph.addSeries(individualWellnessSeries);
+        }
         Button overallWellness = (Button) findViewById(R.id.overall_trends);
 
         ImageButton academicBar = (ImageButton) findViewById(R.id.academic_bar);
@@ -145,105 +149,115 @@ public class MainActivity extends BaseActivity {
 
             mComplete.setVisibility(View.VISIBLE);
             mAssessment.setText("Complete!");
-        //} else {
-            //mComplete.setVisibility(View.INVISIBLE);
-            //mAssessment.setText("Daily Assessment");
-        //}
+        } else {
+            mComplete.setVisibility(View.INVISIBLE);
+            mAssessment.setText("Daily Assessment");
+        }
 
-        mAssessment.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (!score.isComplete() && score != null) {
-                    Intent intent = new Intent(getApplicationContext(), daily_assessment.class);
-                    intent.putExtra("AC", AC);
-                    intent.putExtra("questionNum", mQuestionNum);
+            mAssessment.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    if (!score.isComplete() && score != null) {
+                        Intent intent = new Intent(getApplicationContext(), daily_assessment.class);
+                        intent.putExtra("AC", AC);
+                        intent.putExtra("questionNum", mQuestionNum);
+                        intent.putExtra("score", score);
+                        startActivity(intent);
+                    }
+                }
+            });
+
+            overallWellness.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent intent = new Intent(getApplicationContext(), OverallWellnessActivity.class);
                     intent.putExtra("score", score);
                     startActivity(intent);
                 }
-            }
-        });
+            });
 
-        overallWellness.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(), OverallWellnessActivity.class);
-                startActivity(intent);
-            }
-        });
-
-        mOverallScore.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(), OverallWellnessActivity.class);
-                startActivity(intent);
-            }
-        });
+            mOverallScore.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent intent = new Intent(getApplicationContext(), OverallWellnessActivity.class);
+                    intent.putExtra("score", score);
+                    startActivity(intent);
+                }
+            });
 
 
-        academicBar.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(), AcademicTrendsActivity.class);
-                startActivity(intent);
-            }
-        });
+            academicBar.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent intent = new Intent(getApplicationContext(), AcademicTrendsActivity.class);
+                    intent.putExtra("score", score);
+                    startActivity(intent);
+                }
+            });
 
-        academicIcon.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(), AcademicTrendsActivity.class);
-                startActivity(intent);
-            }
-        });
+            academicIcon.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent intent = new Intent(getApplicationContext(), AcademicTrendsActivity.class);
+                    intent.putExtra("score", score);
+                    startActivity(intent);
+                }
+            });
 
-        emotionalBar.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(), EmotionalTrendsActivity.class);
-                startActivity(intent);
-            }
-        });
+            emotionalBar.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent intent = new Intent(getApplicationContext(), EmotionalTrendsActivity.class);
+                    intent.putExtra("score", score);
+                    startActivity(intent);
+                }
+            });
 
-        emotionalIcon.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(), EmotionalTrendsActivity.class);
-                startActivity(intent);
-            }
-        });
+            emotionalIcon.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent intent = new Intent(getApplicationContext(), EmotionalTrendsActivity.class);
+                    intent.putExtra("score", score);
+                    startActivity(intent);
+                }
+            });
 
-        physicalBar.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(), PhysicalTrendsActivity.class);
-                startActivity(intent);
-            }
-        });
+            physicalBar.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent intent = new Intent(getApplicationContext(), PhysicalTrendsActivity.class);
+                    intent.putExtra("score", score);
+                    startActivity(intent);
+                }
+            });
 
-        physicalIcon.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(), PhysicalTrendsActivity.class);
-                startActivity(intent);
-            }
-        });
+            physicalIcon.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent intent = new Intent(getApplicationContext(), PhysicalTrendsActivity.class);
+                    intent.putExtra("score", score);
+                    startActivity(intent);
+                }
+            });
 
-        socialBar.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(), SocialTrendsActivity.class);
-                startActivity(intent);
-            }
-        });
+            socialBar.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent intent = new Intent(getApplicationContext(), SocialTrendsActivity.class);
+                    intent.putExtra("score", score);
+                    startActivity(intent);
+                }
+            });
 
-        socialIcon.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(), SocialTrendsActivity.class);
-                startActivity(intent);
-            }
-        });
-    }
+            socialIcon.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent intent = new Intent(getApplicationContext(), SocialTrendsActivity.class);
+                    intent.putExtra("score", score);
+                    startActivity(intent);
+                }
+            });
+        }
 
     /**
      * Helper function for AssessmentController persistence through activities.

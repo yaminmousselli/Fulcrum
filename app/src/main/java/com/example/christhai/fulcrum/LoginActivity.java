@@ -81,7 +81,7 @@ public class LoginActivity extends AppCompatActivity {
                             // signed in user can be handled in the listener.
                             if (!task.isSuccessful()) {
                                 Log.w(TAG, "signInWithEmail:failed", task.getException());
-                                Toast.makeText(LoginActivity.this, "Authentication Failed nibbas",
+                                Toast.makeText(LoginActivity.this, "Authentication Failed",
                                         Toast.LENGTH_SHORT).show();
                             }
 
