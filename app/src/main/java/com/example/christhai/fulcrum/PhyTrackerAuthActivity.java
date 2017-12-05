@@ -183,7 +183,7 @@ public class PhyTrackerAuthActivity extends AppCompatActivity implements OnDataP
     private String displayStepDataForToday() {
         DailyTotalResult result = Fitness.HistoryApi.readDailyTotal( mApiClient, DataType.AGGREGATE_STEP_COUNT_DELTA ).await(1, TimeUnit.MINUTES);
 
-        if (result.getStatus().isSuccess()) {
+        if (result.getStatus().isSuccess() && !result.getTotal().isEmpty()) {
             DataSet totalSet = result.getTotal();
             Log.e("History", "Steps Data returned for Data type: " + totalSet.getDataType().getName() + "DataSet size: " + totalSet.getDataPoints().size() + "Num steps: " + totalSet.getDataPoints().get(0).getValue(Field.FIELD_STEPS));
             return totalSet.isEmpty() ? "-1" : totalSet.getDataPoints().get(0).getValue(Field.FIELD_STEPS).asInt() + "";
@@ -191,14 +191,14 @@ public class PhyTrackerAuthActivity extends AppCompatActivity implements OnDataP
         //Toast.makeText(getApplicationContext(), "Steps: " + " Value: ", Toast.LENGTH_SHORT).show();
 
         showDataSet(result.getTotal());
-        return "NOPE";
+        return "-1";
     }
 
     private String displayCalDataForToday() {
         DailyTotalResult result = Fitness.HistoryApi.readDailyTotal( mApiClient, DataType.AGGREGATE_CALORIES_EXPENDED ).await(1, TimeUnit.MINUTES);
         //DailyTotalResult result = Fitness.HistoryApi.readDailyTotal( mApiClient, DataType.TYPE_CALORIES_EXPENDED ).await(1, TimeUnit.MINUTES);
 
-        if (result.getStatus().isSuccess()) {
+        if (result.getStatus().isSuccess() && !result.getTotal().isEmpty()) {
             DataSet totalSet = result.getTotal();
             Log.e("History", "Cal Data returned for Data type: " + totalSet.getDataType().getName() + "DataSet size: " + totalSet.getDataPoints().size() + "Num cals: " + totalSet.getDataPoints().get(0).getValue(Field.FIELD_CALORIES));
             //return totalSet.isEmpty() ? "-1" : totalSet.getDataPoints().get(0).getValue(Field.FIELD_CALORIES).asFloat() + "";
@@ -207,7 +207,7 @@ public class PhyTrackerAuthActivity extends AppCompatActivity implements OnDataP
         //Toast.makeText(getApplicationContext(), "Steps: " + " Value: ", Toast.LENGTH_SHORT).show();
 
         showDataSet(result.getTotal());
-        return "NOPE";
+        return "-1";
     }
 
     private void updateStepText(String newText)
