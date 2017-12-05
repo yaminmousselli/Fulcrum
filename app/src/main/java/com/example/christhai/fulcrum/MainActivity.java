@@ -60,7 +60,6 @@ public class MainActivity extends BaseActivity {
         ImageView mComplete = (ImageView) findViewById(R.id.complete);
         TextView mOverallScore = (TextView) findViewById(R.id.OverallScoresTextViewHomePage);
         AC = new AssessmentController();
-        System.out.println("score is " + score.getScores());
         if (score.isComplete()) {
             GraphView overallWellnessGraph = (GraphView) findViewById(R.id.overallWellnessGraphHomePage);
             LineGraphSeries<DataPoint> overallWellnessSeries = new LineGraphSeries<>(new DataPoint[]{
@@ -172,7 +171,6 @@ public class MainActivity extends BaseActivity {
                 public void onClick(View v) {
                     Intent intent = new Intent(getApplicationContext(), OverallWellnessActivity.class);
                     intent.putExtra("score", score);
-                    System.out.println(score + "Score is");
                     startActivity(intent);
                 }
             });

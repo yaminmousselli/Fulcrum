@@ -48,7 +48,6 @@ public class daily_assessment extends AppCompatActivity {
     protected void onResume() {
         super.onResume();
         setContentView(R.layout.activity_daily_assessment);
-        System.out.println("TEST ASYNC");
 
 
         mQuestionView = (TextView) findViewById(R.id.question);
@@ -86,12 +85,10 @@ public class daily_assessment extends AppCompatActivity {
                     updateScores();
                     DC.pushScores(AC, true);
                     score = new Score(AC.getList(),true);
-                    System.out.println("score is + " + score.getScores());
                     Intent intent = new Intent();
                     intent.putExtra("score", score);
                     intent.setClass(getApplicationContext(),MainActivity.class);
                     startActivity(intent);
-//                    }
                 }
             }
         });

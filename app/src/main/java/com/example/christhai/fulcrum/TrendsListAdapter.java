@@ -166,11 +166,7 @@ public class TrendsListAdapter extends BaseExpandableListAdapter {
 
     @Override
     public boolean isChildSelectable(int groupPosition, int childPosition) {
-        if (this.getChildrenCount(groupPosition) > 0) {
-            return true;
-        } else {
-            return false;
-        }
+        return this.getChildrenCount(groupPosition) > 0;
     }
 
     public Class<? extends AppCompatActivity> selectTrend(int groupPosition, int childPosition) {

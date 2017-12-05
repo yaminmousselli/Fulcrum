@@ -53,7 +53,7 @@ public class DatabaseController {
         mDatabase  = FirebaseDatabase.getInstance().getReference();
         String email = encodeEmail(user.getEmail());
         mDatabase.child("Users").child(email).setValue(user);
-        mDatabase.goOffline();
+        DatabaseReference.goOffline();
     }
 
     public void pushScores(AssessmentController ac, boolean complete) {
@@ -63,7 +63,6 @@ public class DatabaseController {
         }
         Date currentDate = Calendar.getInstance().getTime();
         String date = sdf.format(currentDate);
-        System.out.println("DATE IS" + date);
         Integer academicScore = calcAcademic(scores);
         Integer emotionalScore = calcEmotional(scores);
         Integer physicalScore = calcPhysical(scores);
@@ -71,7 +70,6 @@ public class DatabaseController {
         Score score = new Score(scores, currentDate, academicScore,
                 emotionalScore, physicalScore, socialScore);
         score.setComplete(complete);
-        System.out.println("ERROR CHECK" + score.isComplete());
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
         String email = user.getEmail();
         email = encodeEmail(email);
@@ -95,7 +93,6 @@ public class DatabaseController {
         }
         double normal = (sum/12);
         sum = (int) (normal*10);
-        System.out.println("Academic Score is" + sum);
         int result = (int) sum;
         return result;
     }
@@ -104,12 +101,10 @@ public class DatabaseController {
         double sum = 0;
         for (int i = 0; i < 3; i++) {
             sum += score.get(i);
-            System.out.println("New Sum is " + sum);
         }
         double normal = (sum/12);
         System.out.println(normal);
         sum = (int) (normal*10);
-        System.out.println("Academic Score is" + sum);
         int result = (int) sum;
         return result;
     }
@@ -121,7 +116,6 @@ public class DatabaseController {
         }
         double normal = (sum/8);
         sum = (int) (normal*10);
-        System.out.println("Academic Score is" + sum);
         int result = (int) sum;
         return result;
     }
@@ -133,7 +127,6 @@ public class DatabaseController {
         }
         double normal =(sum/8);
         sum = (int) (normal*10);
-        System.out.println("Academic Score is" + sum);
         int result = (int) sum;
         return result;
     }

@@ -47,7 +47,6 @@ public class OverallWellnessActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_overall_wellness);
         getParcel();
-        System.out.println("Overall Score is " + score.getScores());
     }
 
     @Override

@@ -89,7 +89,6 @@ public class PhyTrackerAuthActivity extends AppCompatActivity implements OnDataP
             public void onClick(View v) {
                 //numSteps.setText(displayStepDataForToday());
                 //displayStepDataForToday();
-                System.out.println("DEBUGGGGG");
                 new ViewTodaysStepCountTask().execute();
                 //numSteps.setText("7593");
             }
@@ -176,7 +175,6 @@ public class PhyTrackerAuthActivity extends AppCompatActivity implements OnDataP
             for(Field field : dp.getDataType().getFields()) {
                 Log.e("History", "\tField: " + field.getName() +
                         " Value: " + dp.getValue(field));
-                System.out.println("DEBUG:" + field.getName() + "Value: " + dp.getValue(field));
                 numSteps.setText(dp.getValue(field).asInt());
             }
         }

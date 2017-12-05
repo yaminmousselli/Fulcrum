@@ -41,7 +41,6 @@ public class BaseActivity extends AppCompatActivity implements NavigationView.On
         if (!getIntent().hasExtra("score")) {
             getParcel();
         }
-        System.out.println("Base Score is" + score.getScores());
 
         //Navigation Drawer Listener
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer);
@@ -69,7 +68,6 @@ public class BaseActivity extends AppCompatActivity implements NavigationView.On
                     Intent intent = new Intent();
                     intent.putExtra("score", score);
                     intent.setClass(getApplicationContext(),newpage);
-                    System.out.println("On Menu Click" + score.getScores());
                     startActivity(intent);
                     return true;
                 } else {
