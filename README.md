@@ -1,6 +1,6 @@
 # (CS 3311 + LMC 3432) + (CS 3312 + LMC 3431) - Junior Design
 ## J7205 & E7205, Team All-Star
-This was one project, but four classes split into two consecutive semesters with the same team. We implemented AGILE workflow methodologies to design and develop a native mobile application for Android. Fulcrum is geared towards college students and it helps them monitor their academic, emotional, physical (optional via the Google Fit physical tracker), and social dimensions of wellness over time. <br/>
+This was one project, but four classes split into two consecutive semesters with the same team. We implemented AGILE workflow methodologies to design and develop a native mobile application for Android. Fulcrum is geared towards college students and it helps them quantify, track, and monitor their academic, emotional, physical (optional via the Google Fit physical tracker), and social dimensions of wellness over time. <br/>
 
 We had client engagements at periodic intervals (usually the beginning and/or end of a sprint). We began with the clients' proposal, requirements, questionnaire they developed alongside the Georgia Tech Counseling Center, and rough mock ups of what they initially perceived the application to be. During both phases, we designed, documented, prototyped, evaluated, re-designed, and tested the application throughout various sprints. <br/>
 
